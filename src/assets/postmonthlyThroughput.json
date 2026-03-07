@@ -1,0 +1,40 @@
+{
+    "data": [
+        {
+            "actualThroughput": 285.66348515436306,
+            "calculatedThroughput": 28.64725346632124,
+            "month": "March",
+            "year": 2023
+        },
+        {
+            "actualThroughput": 290.54611004070586,
+            "calculatedThroughput": 29.017479309879032,
+            "month": "April",
+            "year": 2023
+        },
+        {
+            "actualThroughput": 250.0088077591358,
+            "calculatedThroughput": 25.135627265008544,
+            "month": "May",
+            "year": 2023
+        },
+        {
+            "actualThroughput": 268.3413567517415,
+            "calculatedThroughput": 26.825435324356796,
+            "month": "June",
+            "year": 2023
+        },
+        {
+            "actualThroughput": 112.27472275441593,
+            "calculatedThroughput": 11.200919327772295,
+            "month": "July",
+            "year": 2023
+        },
+        {
+            "actualThroughput": 281.0315118870842,
+            "calculatedThroughput": 27.916595570294326,
+            "month": "August",
+            "year": 2023
+        }
+    ]
+}

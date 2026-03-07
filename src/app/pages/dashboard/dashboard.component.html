@@ -1,0 +1,209 @@
+
+<!-- <app-header></app-header> -->
+<!-- <app-sidebr [isExpanded]="sidebarExpanded" (toggleSidebar)="sidebarExpanded = !sidebarExpanded"></app-sidebr> -->
+
+<div class="container-fluid">
+  <app-filters [filtersData]="payload" [filtersDate]="recommendationDate" type='datepicker' (filterData)="onChangeFilter($event)"></app-filters>
+  <!-- <div [hidden]="!flags.showLoader">
+    <app-apploader></app-apploader>
+  </div> -->
+    <div class="main" [hidden]="true && cardflag && linechart && barcharflag && pieChartflag">
+        <div class="card card_apply">
+            <!-- <div class="row p-4 d-none">
+                <div class="col-8 leftHeading">
+                    <h5 class="heading">Performance Dashboard</h5>
+                </div>
+                <div class="col-4 d-flex justify-content-end pr-4">
+                    <div class="download-button dropdown">
+                        <i class="bi bi-download" style="font-size: 29px;" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                          <li><p class="dropdown-item" (click)="openModalAlert(Modeltemplate1)">Alert Report</p></li>
+                          <li><p class="dropdown-item" (click)="openModalRawData(Modeltemplate2)">Raw Data</p></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btnSubmit d-none" (click)="openModal(Modeltemplate)">View SEC</button>
+                    </div>
+                </div>
+            </div> -->
+            
+        </div>
+        <div class="card card_apply mb-4">
+            <div class="row">
+              <!-- {{cardData}} -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="card card_apply p-4">
+                    <div class="card-body" *ngIf="!cardflag">
+                      <div class="card-text">
+                        <div class="row">
+
+                          <div class="col-lg-3 col-md-3">
+                            <div class="card alert-list cursor-pointer" [ngStyle]="{'background-color':'#0229bf'}" (click)="onClickCard('recommendationsList')">
+                              <div class="card-inner">
+                                <div class="title">Total Recommendation</div>
+                                
+                                <div class="title-value mt-1">{{cardData.Total_Recommendation?cardData.Total_Recommendation:0}}</div>
+                                <!-- <div class="title-value mt-1">23</div> -->
+                              </div>
+                            </div>
+                          </div>
+                          <!-- <div class=" col-lg-3 col-md-3">
+                            <div class="card alert-list cursor-pointer" [ngStyle]="{'background-color':'#af0505'}" (click)="onClickCard('alertList')">
+                              <div class="card-inner">
+                                <div class="title">Total Alerts</div>
+                                <div class="title-value mt-1">{{cardData.Total_Alerts?cardData.Total_Alerts:0}}</div>
+                                <div class="title-value mt-1">21</div>
+                              </div>
+                            </div>
+                          </div> -->
+                          
+                          <!-- <div class="col-lg-3 col-md-3">
+                            <div class="card alert-list cursor-pointer" [ngStyle]="{'background-color':'#028900'}" (click)="onClickCard('recommendationsList')">
+                              <div class="card-inner">
+                                <div class="title">Acknowledged Recommandation</div>
+                                <div class="title-value mt-1">{{cardData.Total_Recommendation_isAcknowledged_YES?cardData.Total_Recommendation_isAcknowledged_YES:0}}</div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-3 col-md-3">
+                            <div class="card alert-list cursor-pointer" [ngStyle]="{'background-color':'#820bbb'}" (click)="onClickCard('recommendationsList')">
+                              <div class="card-inner">
+                                <div class="title">Unacknowledged Recommandation</div>
+                                <div class="title-value mt-1">{{cardData.Total_Recommendation_isAcknowledged_NO?cardData.Total_Recommendation_isAcknowledged_NO:0}}</div>
+                              </div>
+                            </div>
+                          </div> -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-body" *ngIf="cardflag">
+                      <div class="card-text">
+                        <div class="row">
+                          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <p>No Record Found</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+
+        <div>
+          <div class="card card_apply mb-4 mt-2">
+            <div class="row">
+                <div class="col-6 d-flex justify-contennt-start">
+                    <div style="margin: 0px 15px">
+                        <p class="parsgraph">
+                          <!-- <span class="card-dailybasis" style="color: #ee1010">Daily Basis</span>
+                          <span class="card-dailybasis" style="padding-left: 25px;"
+                            >Min: {{throughputValues.minValue}}</span
+                          >
+                          <span class="card-dailybasis">Max: {{throughputValues.maxValue}}</span>
+                          <span class="card-dailybasis">Avg: {{throughputValues.avgValue}}</span> -->
+                          <span class="card-dailybasis" style="color: #ee1010">Daily Basis</span>
+                          <span class="card-dailybasis" style="padding-left: 25px; color: #fff;"
+                            >Min: {{throughputValues.minValue.toFixed(2)}}</span>
+                          <span class="card-dailybasis" style="color: #fff;">Max: {{throughputValues.maxValue.toFixed(2)}}</span>
+                          <span class="card-dailybasis" style="color: #fff;">Avg: {{throughputValues.avgValue}}</span>
+                        </p>
+                    </div>
+                </div>
+                <!-- <div class="col-6  justify-content-end d-none">
+                    <div class="flex justify-content-end" [formGroup]="form">
+                        <input formControlName="datefield"  [owlDateTimeTrigger]="dt" [owlDateTime]="dt" [max]="max" class="date_time form-control" />
+                        <owl-date-time #dt></owl-date-time>
+                      </div>
+                </div> -->
+            </div>
+            <div class="row">
+                <div class="col-12">
+                  <div class="loader" [hidden]="!throughputFlags.showThroughPutLoader">
+                    <app-loader2></app-loader2>
+                  </div>
+                  <div class="charts mt-2" [hidden]="!throughputFlags.showThroughPutData">
+                    <div class="line" [chart]="chart"></div>
+                  </div>
+
+                  <div class="line text-center noDataBox" *ngIf="throughputFlags.throughPutNoData"> <span>No Data Found Throughput</span></div>
+                </div>
+            </div>
+          </div>
+          <div>
+            
+          </div>
+        </div>
+        
+
+        <!-- <div class="card card_apply mb-4" *ngIf="linechart">
+          <div class="row">
+            <div class="col-md-12 d-flex justify-content-center align-items-center">
+              <span class="text-center">No Record Found for ThroughPut</span>
+            </div>
+          </div>
+        </div> -->
+
+
+
+
+        <div class="card card_apply">
+            <div class="row">
+                <div class="col-6">
+                    <div class="card card_apply">
+                        <div class="card-header" style="color: #fff;">
+                            Weekly Alarm Counts
+                        </div>
+                        <div class="loader" [hidden]="!wklyAlmCountFlags.showWklyAlmCountLoader">
+                          <app-loader2></app-loader2>
+                        </div>
+                        <div class="pie-charts mt-2" id='chart-container' [hidden]="!wklyAlmCountFlags.showWklyAlmCountData">
+                          <div class="pie-container" [chart]="chart1"></div>
+                        </div>
+                        <div class="pie-charts mt-2" id='chart-container' [hidden]="!wklyAlmCountFlags.WklyAlmCountNoData">
+                          <div class="pie-container" style="margin-top: 10px;">No Record Found</div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="card card_apply">
+                        <div class="card-header" style="color: #fff;">
+                            Monthly Basis Average Throughput
+                        </div>
+                        <div class="loader" [hidden]="!monthlyAvgThroughputFlags.showMonthlyAvgThroughputLoader">
+                          <app-loader2></app-loader2>
+                        </div>
+                        <div class="row">
+                          <div class="bar-charts mt-2" [hidden]="!monthlyAvgThroughputFlags.showMonthlyAvgThroughputData">
+                            <div class="barChart-container" [chart]="chart2"></div>
+                          </div>
+                          <div class="pie-charts mt-2" id='chart-container' [hidden]="!monthlyAvgThroughputFlags.monthlyAvgThroughputNoData">
+                            <div class="barChart-container" style="margin-top: 10px;">No Record Found</div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="col-12" *ngIf="linechart && pieChartflag && barcharflag && cardflag">
+      <div class="noDataBox">
+        <span class="text-center">No Data Found</span>
+      </div>
+    </div> -->
+</div>
+
+
+
+
+<!-- <ng-template #Modeltemplate>
+    <app-sec-popup [modalRef]="modalRef"></app-sec-popup>
+</ng-template>
+
+<ng-template #Modeltemplate1>
+    <app-alert-popup [modalRef]="modalRef1"></app-alert-popup>
+</ng-template>
+<ng-template #Modeltemplate2>
+    <app-raw-data-popup [modalRef]="modalRef2"></app-raw-data-popup>
+</ng-template> -->

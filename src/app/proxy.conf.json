@@ -1,0 +1,9 @@
+{
+    "/proxy/*": {
+    "target": "https://i4.utclconnect.com/uat/opt/kiln/",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {"^/proxy" : ""}
+    }
+  }

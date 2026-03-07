@@ -1,0 +1,28 @@
+{
+    "elements": [
+        {
+            "AlertCount": 325,
+            "Week": "Week 01",
+            "startDate": "August 20, 2023",
+            "endDate": "August 26, 2023"
+        },
+        {
+            "AlertCount": 595,
+            "Week": "Week 02",
+            "startDate": "August 13, 2023",
+            "endDate": "August 19, 2023"
+        },
+        {
+            "AlertCount": 109,
+            "Week": "Week 03",
+            "startDate": "August 6, 2023",
+            "endDate": "August 12, 2023"
+        },
+        {
+            "AlertCount": 673,
+            "Week": "Week 04",
+            "startDate": "July 30, 2023",
+            "endDate": "August 5, 2023"
+        }
+    ]
+}

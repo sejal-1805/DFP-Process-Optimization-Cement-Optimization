@@ -1,0 +1,252 @@
+<!-- <app-header></app-header> -->
+<!-- <app-sidebr [isExpanded]="sidebarExpanded" (toggleSidebar)="sidebarExpanded = !sidebarExpanded"></app-sidebr> -->
+<div class="container-fluid">
+  <div class="flex items-center justify-between mb-2 -mt-0.5">
+    <!-- Title -->
+    <div class="text-[18px] font-semibold text-[var(--title)]">
+      <span>Process Control Dashboard - {{ displayName }}</span>
+    </div>
+
+    <!-- Notification Icon -->
+    <div class="flex items-center">
+      <a
+        (click)="
+          openModal(recommedationtemplate);
+          getRecommendationPopupData();
+          bellClick()
+        "
+        class="cursor-pointer"
+      >
+        <span
+          [matBadge]="no_recommendation"
+          matBadgeColor="warn"
+          class="material notif_icon material-symbols-outlined"
+        >
+          notifications
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <!-- {{flags.showLoader}} -->
+  <div class="custom-scrollbar w-full rounded-lg border border-[var(--form-border)] overflow-hidden">
+    <!-- <div class="card card_apply mb-2">
+      <div class="row">
+        <div class="col-sm-5 page-title">
+          <h5 class="card-title pageheading">
+            Process Control Dashboard - {{displayName}}
+          </h5>
+        </div>
+        <div class="col-sm-4 recommendationBox">
+          <span class="style-k5UOe" id="style-k5UOe">
+          </span>
+        </div>
+        <div class="col-sm-3 d-flex justify-content-end align-items-center">
+          <a (click)="openModal(recommedationtemplate);getRecommendationPopupData();bellClick()">
+            <span [matBadge]="no_recommendation" matBadgeColor="warn" class="material notif_icon material-symbols-outlined">
+              notifications
+            </span>
+          </a>
+  
+        </div>
+      </div>
+    </div> -->
+    <!-- {{recommendationDate | json}} -->
+    <app-filters
+      *ngIf="cementCheckToken"
+      [filtersData]="payload"
+      [filtersDate]="recommendationDate"
+      type="datepicker1"
+      (filterData)="onChangeFilter($event)"
+    ></app-filters>
+
+    <div class="loaderBox" [hidden]="!flags.showLoader">
+      <!-- {{flags | json}} -->
+      <!-- {{dataSource}} -->
+      <app-loader></app-loader>
+    </div>
+    <div class="row mb-2" [hidden]="flags.showLoader">
+      <div
+        class="col-md-6 col-sm-6 col-xs-12"
+        *ngIf="dataSource && dataSource.Resultant_Tags_Data.length > 0"
+      >
+        <div class="card card_apply">
+          <div class="card-body">
+            <p class="card-text titlecls">RESULTANT PARAMETERS</p>
+            <hr color="#636363" />
+            <app-gauge-graph
+              [datasorce]="dataSource.Resultant_Tags_Data"
+              [payload]="payload"
+              [timestamp]="dataSource.timestamp"
+              type="resultant"
+            ></app-gauge-graph>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-md-6 col-sm-6 col-xs-12"
+        *ngIf="dataSource && dataSource.Control_Tags_Data.length > 0"
+      >
+        <div class="card card_apply">
+          <div class="card-body">
+            <p class="titlecls">CONTROL PARAMETERS</p>
+            <hr color="#636363" />
+            <div class="row">
+              <div class="col-12">
+                <app-control-gauge
+                  [datasorce]="dataSource.Control_Tags_Data"
+                  [payload]="payload"
+                  [timestamp]="dataSource.timestamp"
+                  type="controlable"
+                ></app-control-gauge>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- {{dataSource && dataSource.Control_Tags_Data.length==0 && dataSource.Resultant_Tags_Data.length==0}} -->
+      <div class="col-12" *ngIf="getCementLatestData">
+        <div class="noDataBox">
+          <!-- {{dataSource | json}} -->
+          <!-- {{dataSource.Control_Tags_Data.length == 0}} -->
+          <span class="text-center">No Data Found</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- modal component -->
+<ng-template #recommedationtemplate>
+  <div class="modal-content">
+    <div class="modal-header align-items-center">
+      <h4 class="modal-title-heading">
+        Acknowledge Recommendation(
+        {{ recommendationDate ? recommendationDate : "" }})
+      </h4>
+
+      <button class="btn btnSubmit" (click)="modalRef?.hide(); closeRecomPop()">
+        Close
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row d-none">
+        <div class="col-10">
+          <div class="d-flex flex-column">
+            <app-datetimepicker
+              type="datepicker"
+              (dateTime)="onSelectDatetime($event)"
+              class="m2-10 testz"
+            ></app-datetimepicker>
+          </div>
+        </div>
+        <div class="col-2">
+          <button
+            type="button"
+            class="btn btnSubmit"
+            (click)="getRecommendationPopupData()"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Parameter Type</th>
+            <th>Initial Value</th>
+            <th>Recommended Value</th>
+            <th>Remarks</th>
+            <th>Acknowledge</th>
+            <th>Action Taken</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody
+          id="style-OqqBV"
+          class="style-OqqBV"
+          *ngIf="!recommendationcheckData"
+        >
+          <tr class="mat-row" *ngFor="let item of recommendationDataSource">
+            <td class="mat-cell content text-align-left">
+              {{ item.parameterName ? item.parameterName : "NA" }}
+            </td>
+            <td class="mat-cell content">
+              {{ item.initialValue ? item.initialValue.toFixed(0) : 0 }}
+            </td>
+            <td class="mat-cell content">
+              {{ item.recommendedValue ? item.recommendedValue : 0 }}
+            </td>
+            <td class="mat-cell content">
+              <div class="comment_box" [hidden]="!showEditIcon">
+                <span style="margin-right: 10px" [hidden]="item.showTextBox"
+                  >{{ item.comments }}
+                </span>
+                <div class="editIcon content-center">
+                  <span
+                    class="material material-symbols-outlined"
+                    (click)="showTextBox(item)"
+                    [hidden]="item.showTextBox"
+                  >
+                    edit
+                  </span>
+                </div>
+              </div>
+              <div class="textBox" [hidden]="!item.showTextBox">
+                <textarea
+                  matInput
+                  cdkTextareaAutosize
+                  #autosize="cdkTextareaAutosize"
+                  cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="5"
+                  [(ngModel)]="item.comments"
+                ></textarea>
+                <button
+                  type="button"
+                  class="close"
+                  aria-label="Close"
+                  (click)="showTextBox(item)"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            </td>
+
+            <td class="mat-cell content">
+              <input
+                type="checkbox"
+                id="vehicle1"
+                [checked]="item.isAcknowledged === 'Yes'"
+                (change)="checkBoxAck($event, item)"
+              />
+            </td>
+
+            <td class="mat-cell content">
+              <mat-radio-group [(ngModel)]="item.actionTaken">
+                <mat-radio-button [value]="true">Yes </mat-radio-button>
+                <mat-radio-button [value]="false">No</mat-radio-button>
+              </mat-radio-group>
+            </td>
+
+            <td>
+              <button
+                class="btn btnSubmit inlineUpdate"
+                (click)="updateRecommendation(item)"
+              >
+                Update
+              </button>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="recommendationcheckData">
+          <tr>
+            <td colspan="6" class="recommendation_notFound">No Record Found</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="modal-footer"></div>
+  </div>
+</ng-template>

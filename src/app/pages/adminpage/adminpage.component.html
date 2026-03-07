@@ -1,0 +1,83 @@
+<!-- <app-header></app-header> -->
+<!-- <app-sidebr [isExpanded]="sidebarExpanded" (toggleSidebar)="sidebarExpanded = !sidebarExpanded"></app-sidebr> -->
+
+<div class="container-fluid">
+  <!-- <app-filters [filtersData]="payload" [filtersDate]="recommendationDate" type='datepicker' (filterData)="onChangeFilter($event)"></app-filters> -->
+  <!-- <div class="loader" *ngIf="noRecordFound">
+    <app-loader2></app-loader2>
+  </div> -->
+  <!-- <div *ngIf="activateRecordNotFound">
+    <div class="data-not-found">
+      <span class="text-center">No Data Found</span>
+    </div>
+  </div> -->
+
+  <div class="flex text-[18px] font-semibold text-[var(--title)] mb-2">
+    <span>Admin</span>
+  </div>
+
+    <div class="custom-scrollbar w-full overflow-x-auto rounded-lg border border-[var(--form-border)] overflow-hidden">
+      <table class="w-full border-collapser">
+        <thead class="tableheading-data bg-gradient-to-r from-orange-400 to-orange-300 text-[#111111]">
+          <th class="pl-2.5 table-header">Plant Name</th>
+          <th class="table-header">Plant</th>
+          <th class="table-header">Mill</th>
+          <th class="table-header">Parameter</th>
+          <th class="table-header">Description</th>
+          <th class="table-header">Close Loop</th>
+          <th class="table-header">Action</th>
+        </thead>
+        <tbody class="tablebody-data" *ngIf="!noRecordFound">
+            <ng-container *ngFor="let record of tableRecord">
+                <tr *ngFor="let result of record.result; let i=index" [ngStyle]="i === record.result.length-1 || i==0 ? {'border-bottom': '2px solid white'} : {}">
+                    <td class="tabledata-center pl-2.5" [ngClass]="i==0 ? 'tableFirstRow':{}">{{ result['Plant Name'] }}</td>
+                    <td class="tabledata-center" [ngClass]="i==0 ? 'tableFirstRow':{}">{{ result.plant }}</td>
+                    <td class="tabledata-center" [ngClass]="i==0 ? 'tableFirstRow':{}">{{ result.mill }}</td>
+                    <td class="tabledata-center" [ngClass]="i==0 ? 'tableFirstRow':{}">
+                      {{
+                        result.parameters===""? 'Activate Closed Loop': result.parameters
+                      }}
+                    </td>
+                    <td class="tabledata-center" [ngClass]="i==0 ? 'tableFirstRow':{}">{{result.Description}}</td>
+                    <td class="tabledata-center" [ngClass]="i==0 ? 'tableFirstRow':{}">
+                      <mat-radio-group [(ngModel)]="result['Close Loop Flag']">
+                        <mat-radio-button
+                          [value]="true"
+                          [checked]="result['Close Loop Flag']===true"
+                          [disabled]="record.result[0]['Close Loop Flag']===false && i >=1"
+                          (change)="handleFlagChange($event,result,record.result)"
+                          >Yes
+                        </mat-radio-button>
+                        <mat-radio-button
+                          [value]="false"
+                          [checked]="result['Close Loop Flag']===false"
+                          [disabled]="record.result[0]['Close Loop Flag']===false"
+                          (change)="handleFlagChange($event,result,record.result)"
+                          >No</mat-radio-button
+                        >
+      
+                      </mat-radio-group>
+                    </td>
+                    <td *ngIf="i === 0" class="tablebtn-submit" [ngClass]="i==0 ? 'tableFirstRow':{}">
+                      <button type="submit" class="btn admin-btn-submit" (click)="handleSubmit()" [disabled]="submitButtonsDisabled[result.plant][result.mill]">
+                        Submit
+                      </button>
+                    </td>
+                  
+                </tr>
+              </ng-container>
+        </tbody>
+        <tbody class="tablebody-data" *ngIf="noRecordFound">
+          <tr>
+            <td colspan="7" *ngIf="activateRecordNotFound">
+              <div class="loader">
+                <app-loader2></app-loader2>
+              </div>
+            </td>
+            <td colspan="7" *ngIf="!activateRecordNotFound"><p class="data-not-found"> {{ noDataFoundCement ? 'No Record Found for ' + jsonCement.Plant_Code : 'No Record Found' }}</p></td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>

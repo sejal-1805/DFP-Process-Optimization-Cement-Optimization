@@ -1,0 +1,221 @@
+<!-- <app-header></app-header> -->
+<!-- <app-sidebr [isExpanded]="sidebarExpanded" (toggleSidebar)="sidebarExpanded = !sidebarExpanded"></app-sidebr> -->
+<div class="custom-scrollbar mx-3">
+  <div class="flex text-[18px] font-semibold text-[var(--title)] mb-2 -mt-0.5">
+    <span>Recommendation List</span>
+  </div>
+
+  <div
+    class="w-full rounded-lg border border-[var(--form-border)] overflow-hidden"
+  >
+    <!-- <div> -->
+      <div id="style-yRrfL">
+        <div class="flex">
+          <!-- <div class="col-sm-2">
+                        <h5 class="card-title pageheading">
+                            Recommendation List
+                        </h5>
+                    </div> -->
+          <div>
+            <app-filters
+              type="rangepicker"
+              [filtersData]="payload"
+              [showRange]="false"
+              *ngIf="payload"
+              (filterData)="onChangeFilter($event)"
+            ></app-filters>
+          </div>
+        </div>
+        <div class="mat-elevation-z8 style-qG6n4" id="style-qG6n4">
+          <div class="loaderBox" [hidden]="!flags.showLoader">
+            <app-loader></app-loader>
+          </div>
+
+          <!-- <div [hidden]="flags.showLoader"> -->
+            <!-- <div> -->
+              <!-- <div > -->
+                <!-- <div> -->
+                  <!-- <label class="mb-2 dropdownTitle">Parameter</label>
+
+                                <select class="form-select" [(ngModel)]="selectedOption" (change)="getRecommandParamterDropDown($event)">
+
+                                    <option [value]='null' [disabled]="selectedOption === null">--Select Parameter Here--</option>
+                                    <option value='All'>ALL</option>
+                                    <option *ngFor="let data of parameterDropDownData" [value]="data.Tag_Id">{{data.UI_Display_Name?data.UI_Display_Name:data.Generic_Description}}</option>
+
+                                   
+
+                                </select> -->
+                <!-- </div> -->
+              <!-- </div> -->
+            <!-- </div> -->
+            <!-- <mat-paginator [length]="100" [pageSize]="10" #paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+                            </mat-paginator> -->
+            <!-- <table class="mat-table style-mKJ5X" id="style-mKJ5X" *ngIf="!showNoData">
+                            
+                          
+                            <thead>
+                                <tr class="mat-header-row">
+                                    <th class="mat-header-cell content">
+                                        Parameter Name
+                                    </th>
+                                    <th class="mat-header-cell content">
+                                        Initial Value
+                                    </th>
+                                    <th class="mat-header-cell content style-MofsM" id="style-MofsM">
+                                        Recommended Value
+                                    </th>
+                                    <th class="mat-header-cell content">
+                                        Acknowledged
+                                    </th>
+                                    <th class="mat-header-cell content style-9aZ9Q" id="style-9aZ9Q">
+                                        Action Taken
+                                    </th>
+                                    <th class="mat-header-cell content">
+                                        Snoozed
+                                    </th>
+                                    <th class="mat-header-cell content">
+                                        Date
+                                    </th>
+                                    <th class="mat-header-cell content">
+                                        Time
+                                    </th>
+                                    <th class="mat-header-cell content">
+                                        Comments
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="mat-row" *ngFor="let item of recommendationDataSource">
+                                    <td class="mat-cell content style-3XYrn" id="style-3XYrn">
+                                        {{item.parameterName}}
+                                    </td>
+                                    <td class="mat-cell content">
+                                        {{item.initialValue?item.initialValue:0}}
+                                    </td>
+                                    <td class="mat-cell content">
+                                        {{item.recommendedValue?item.recommendedValue:0}}
+                                    </td>
+                                    <td class="mat-cell content">
+                                        {{item.isAcknowledged?item.isAcknowledged:'No'}}
+                                    </td>
+                                    <td class="mat-cell content">
+                                        {{item.actionTaken?item.actionTaken:'No'}}
+                                    </td>
+                                    <td class="mat-cell content">
+                                        {{item.is_snoozed?item.is_snoozed:'No'}}
+                                    </td>
+                                  
+                                    <td class="mat-cell content">
+                                        {{item.timestamp?item.timestamp.slice(0,10):'NA'}}
+                                    </td>
+                                    <td class="mat-cell content">
+                                        {{item.timestamp?item.timestamp.slice(11,16):'NA'}}
+                                    </td>
+                                    <td class="mat-cell content">
+                                        {{item.comments?item.comments:'NA'}}
+                                    </td>
+
+                                </tr>
+                               
+                            </tbody>
+                            <tfoot class="mat-table-sticky style-Uvf4p" id="style-Uvf4p">
+                            </tfoot>
+                        </table> -->
+
+            <a
+              (click)="downloadRecommendationData()"
+              [hidden]="recommendationDataSource.length == 0"
+            >
+              <span
+                class="material download material-symbols-outlined text-[30px] flex justify-end"
+              >
+                download
+              </span>
+            </a>
+
+            <div
+              class="custom-scrollbar w-full overflow-x-auto rounded-lg overflow-hidden max-h-[400px]"
+            >
+              <table
+                class="w-full border-collapse"
+                mat-table
+                matSort
+                (matSortChange)="sortData($event)"
+                [dataSource]="dataSource"
+                [hidden]="recommendationDataSource.length == 0"
+              >
+                <ng-container
+                  [matColumnDef]="item"
+                  *ngFor="let item of keysList; let i = index"
+                >
+                  <th
+                    class="text-[14px] text-left px-4 py-1 font-semibold whitespace-nowrap border-b border-[var(--form-border)] sticky"
+                    mat-header-cell
+                    [mat-sort-header]="item"
+                    *matHeaderCellDef
+                  >
+                    {{ displayedColumn[i] }}
+                  </th>
+                  <!-- <td mat-cell *matCellDef="let element"> 
+                                    <ng-container>
+                                        {{element[item]?element[item].toFixed(2):'N/A'}}
+                                    </ng-container>
+                                </td> -->
+                  <td
+                    mat-cell
+                    *matCellDef="let element"
+                    class="text-[13px] px-4 py-1 whitespace-nowrap text-[var(--text-color)]"
+                  >
+                    {{ element[item] ? element[item] : "N/A" }}
+                  </td>
+                </ng-container>
+                <tr
+                  mat-header-row
+                  *matHeaderRowDef="keysList"
+                  class="border-b border-[var(--form-border)] transition"
+                ></tr>
+                <tr
+                  mat-row
+                  *matRowDef="let row; columns: keysList"
+                  class="border-b border-[var(--form-border)] transition"
+                ></tr>
+              </table>
+            </div>
+            <div
+              class="col-sm-9 d-flex justify-content-end"
+              [hidden]="recommendationDataSource.length == 0"
+            >
+              <mat-paginator
+                [length]="100"
+                [pageSize]="10"
+                #paginator
+                [hidden]="recommendationDataSource.length == 0"
+                [pageSizeOptions]="[5, 10, 25, 100]"
+                aria-label="Select page"
+              >
+              </mat-paginator>
+            </div>
+          <!-- </div> -->
+          <div
+            class="m-3 flex flex-col items-center justify-center py-8 px-6 text-center border border-dashed border-[var(--form-border)] rounded-xl transition-all duration-300 animate-fadeIn"
+            [hidden]="recommendationDataSource.length !== 0"
+          >
+            <!-- Icon -->
+            <div class="text-3xl mb-4 zoom-animation">🔍</div>
+
+            <!-- Title -->
+            <h2 class="text-lg font-semibold text-[var(--leftdrawer-text)] mb-2">
+              No Data Found
+            </h2>
+
+            <!-- Description -->
+            <p class="text-sm text-[var(--card-subtle)] mb-4">
+              Try changing the filters or refresh the data
+            </p>
+          </div>
+        </div>
+      </div>
+    <!-- </div> -->
+  </div>
+</div>

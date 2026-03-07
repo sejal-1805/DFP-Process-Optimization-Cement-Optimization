@@ -1,0 +1,319 @@
+{
+    "elements": [
+        {
+            "(Raw material flow) kiln feed": 287.6816,
+            "calculatedThroughput": 287.6816,
+            "date": "2023-08-23T18:30:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 288.361,
+            "calculatedThroughput": 288.361,
+            "date": "2023-08-23T18:40:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 288.5875,
+            "calculatedThroughput": 288.5875,
+            "date": "2023-08-23T18:50:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 289.1159,
+            "calculatedThroughput": 289.1159,
+            "date": "2023-08-23T19:00:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 289.8708,
+            "calculatedThroughput": 289.8708,
+            "date": "2023-08-23T19:10:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 289.1159,
+            "calculatedThroughput": 289.1159,
+            "date": "2023-08-23T19:20:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 288.8139,
+            "calculatedThroughput": 288.8139,
+            "date": "2023-08-23T19:30:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 287.4552,
+            "calculatedThroughput": 287.4552,
+            "date": "2023-08-23T19:40:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 287.9081,
+            "calculatedThroughput": 287.9081,
+            "date": "2023-08-23T19:50:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 286.0964,
+            "calculatedThroughput": 286.0964,
+            "date": "2023-08-23T20:00:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 287.6062,
+            "calculatedThroughput": 287.6062,
+            "date": "2023-08-23T20:10:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 285.417,
+            "calculatedThroughput": 285.417,
+            "date": "2023-08-23T20:20:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 286.0209,
+            "calculatedThroughput": 286.0209,
+            "date": "2023-08-23T20:30:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 288.512,
+            "calculatedThroughput": 288.512,
+            "date": "2023-08-23T20:40:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 285.9454,
+            "calculatedThroughput": 285.9454,
+            "date": "2023-08-23T20:50:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 287.5307,
+            "calculatedThroughput": 287.5307,
+            "date": "2023-08-23T21:00:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 286.9268,
+            "calculatedThroughput": 286.9268,
+            "date": "2023-08-23T21:10:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 286.0209,
+            "calculatedThroughput": 286.0209,
+            "date": "2023-08-23T21:20:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 287.3042,
+            "calculatedThroughput": 287.3042,
+            "date": "2023-08-23T21:30:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 287.6816,
+            "calculatedThroughput": 287.6816,
+            "date": "2023-08-23T21:40:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 289.4933,
+            "calculatedThroughput": 289.4933,
+            "date": "2023-08-23T21:50:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 288.8894,
+            "calculatedThroughput": 288.8894,
+            "date": "2023-08-23T22:00:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 287.9081,
+            "calculatedThroughput": 287.9081,
+            "date": "2023-08-23T22:10:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 288.2855,
+            "calculatedThroughput": 288.2855,
+            "date": "2023-08-23T22:20:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 285.4925,
+            "calculatedThroughput": 285.4925,
+            "date": "2023-08-23T22:30:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 287.6816,
+            "calculatedThroughput": 287.6816,
+            "date": "2023-08-23T22:40:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 288.512,
+            "calculatedThroughput": 288.512,
+            "date": "2023-08-23T22:50:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 287.6062,
+            "calculatedThroughput": 287.6062,
+            "date": "2023-08-23T23:00:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 287.5307,
+            "calculatedThroughput": 287.5307,
+            "date": "2023-08-23T23:10:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 284.2847,
+            "calculatedThroughput": 284.2847,
+            "date": "2023-08-23T23:20:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 284.3602,
+            "calculatedThroughput": 284.3602,
+            "date": "2023-08-23T23:30:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 285.1151,
+            "calculatedThroughput": 285.1151,
+            "date": "2023-08-23T23:40:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 286.1719,
+            "calculatedThroughput": 286.1719,
+            "date": "2023-08-23T23:50:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 287.2287,
+            "calculatedThroughput": 287.2287,
+            "date": "2023-08-24T00:00:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 287.5307,
+            "calculatedThroughput": 287.5307,
+            "date": "2023-08-24T00:10:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 285.417,
+            "calculatedThroughput": 285.417,
+            "date": "2023-08-24T00:20:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 286.9268,
+            "calculatedThroughput": 286.9268,
+            "date": "2023-08-24T00:30:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 286.6248,
+            "calculatedThroughput": 286.6248,
+            "date": "2023-08-24T00:40:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 286.8513,
+            "calculatedThroughput": 286.8513,
+            "date": "2023-08-24T00:50:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 286.0209,
+            "calculatedThroughput": 286.0209,
+            "date": "2023-08-24T01:00:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 287.8326,
+            "calculatedThroughput": 287.8326,
+            "date": "2023-08-24T01:10:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 287.7571,
+            "calculatedThroughput": 287.7571,
+            "date": "2023-08-24T01:20:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 285.8699,
+            "calculatedThroughput": 285.8699,
+            "date": "2023-08-24T01:30:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 289.1159,
+            "calculatedThroughput": 289.1159,
+            "date": "2023-08-24T01:40:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 286.3984,
+            "calculatedThroughput": 286.3984,
+            "date": "2023-08-24T01:50:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 287.6062,
+            "calculatedThroughput": 287.6062,
+            "date": "2023-08-24T02:00:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 288.663,
+            "calculatedThroughput": 288.663,
+            "date": "2023-08-24T02:10:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 286.3229,
+            "calculatedThroughput": 286.3229,
+            "date": "2023-08-24T02:20:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 287.0023,
+            "calculatedThroughput": 287.0023,
+            "date": "2023-08-24T02:30:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 285.719,
+            "calculatedThroughput": 285.719,
+            "date": "2023-08-24T02:40:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 285.0396,
+            "calculatedThroughput": 285.0396,
+            "date": "2023-08-24T02:50:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 287.9836,
+            "calculatedThroughput": 287.9836,
+            "date": "2023-08-24T03:00:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 0,
+            "calculatedThroughput": 0,
+            "date": "2023-08-24T03:10:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 285.6435,
+            "calculatedThroughput": 285.6435,
+            "date": "2023-08-24T03:20:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 285.0396,
+            "calculatedThroughput": 285.0396,
+            "date": "2023-08-24T03:30:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 288.9649,
+            "calculatedThroughput": 288.9649,
+            "date": "2023-08-24T03:40:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 255.9016,
+            "calculatedThroughput": 255.9016,
+            "date": "2023-08-24T03:50:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 265.4884,
+            "calculatedThroughput": 265.4884,
+            "date": "2023-08-24T04:00:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 287.8326,
+            "calculatedThroughput": 287.8326,
+            "date": "2023-08-24T04:10:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 287.3797,
+            "calculatedThroughput": 287.3797,
+            "date": "2023-08-24T04:20:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 287.3797,
+            "calculatedThroughput": 287.3797,
+            "date": "2023-08-24T04:30:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 289.4178,
+            "calculatedThroughput": 289.4178,
+            "date": "2023-08-24T04:40:00.000Z"
+        },
+        {
+            "(Raw material flow) kiln feed": 288.8894,
+            "calculatedThroughput": 288.8894,
+            "date": "2023-08-24T04:50:00.000Z"
+        }
+    ]
+}

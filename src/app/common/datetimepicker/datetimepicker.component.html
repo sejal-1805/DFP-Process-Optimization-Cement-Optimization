@@ -1,0 +1,41 @@
+<label *ngIf="type == 'datepicker'" class="dateTimebox">
+  <input
+    [owlDateTime]="dt1"
+    [owlDateTimeTrigger]="dt1"
+    [(ngModel)]="date_time"
+    [disabled]="!date_time"
+    class="w-full min-h-[29px] px-2 py-0.5 text-[13px] rounded-lg cursor-pointer outline-none bg-[var(--input-enable-bg)] border border-[var(--input-enable-border)] text-[var(--select-input-value)] placeholder-[var(--search-placeholder)]"
+    (dateTimeChange)="onselectDateTime($event)"
+    (dateTimeChange)="onselectDateTime($event)"
+    placeholder="Date Times"
+  />
+  <owl-date-time #dt1 [pickerType]="'calendar'"></owl-date-time>
+</label>
+<label *ngIf="type == 'datepicker1'" class="dateTimebox">
+  <!-- {{date_times}} -->
+  <input
+    [owlDateTime]="dt2"
+    [owlDateTimeTrigger]="dt2"
+    [disabled]="!date_times"
+    [(ngModel)]="date_times"
+    class="w-full min-h-[29px] px-2 py-0.5 text-[13px] rounded-lg cursor-pointer outline-none bg-[var(--input-enable-bg)] border border-[var(--input-enable-border)] text-[var(--select-input-value)] placeholder-[var(--search-placeholder)]"
+    (dateTimeChange)="onselectDateTime($event)"
+    (dateTimeChange)="onselectDateTimes($event)"
+    placeholder="Date Time"
+  />
+  <owl-date-time #dt2></owl-date-time>
+</label>
+<label *ngIf="type == 'rangepicker'" class="dateTimebox">
+  <input
+    [owlDateTimeTrigger]="dt10"
+    [owlDateTime]="dt10"
+    [(ngModel)]="selectedRange"
+    class="w-full min-h-[29px] px-2 py-0.5 text-[13px] rounded-lg cursor-pointer outline-none bg-[var(--input-enable-bg)] border border-[var(--input-enable-border)] text-[var(--select-input-value)] placeholder-[var(--search-placeholder)]"
+    (dateTimeChange)="onselectDateTime($event)"
+    (dateTimeChange)="onselectDateTimeRange($event)"
+    [selectMode]="'range'"
+    placeholder="Select Date Range"
+    [max]="maxDate"
+  />
+  <owl-date-time #dt10></owl-date-time>
+</label>

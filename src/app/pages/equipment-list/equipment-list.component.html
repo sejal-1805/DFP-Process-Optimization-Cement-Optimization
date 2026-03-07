@@ -1,0 +1,160 @@
+<app-header></app-header>
+<app-sidebr [isExpanded]="sidebarExpanded" (toggleSidebar)="sidebarExpanded = !sidebarExpanded"></app-sidebr>
+<div class="container-fluid">
+    <div class="card card_apply">
+        <div class="card-body pt-1">
+            <div id="style-yRrfL" class="style-yRrfL">
+                <div class="row">
+                    <!-- <div class="col-sm-2">
+                        <h5 class="card-title pageheading">
+                            Recommendation List
+                        </h5>
+                    </div> -->
+                    <div class="col-sm-12">
+                        <app-filters type="rangepicker" [filtersData]='payload' [showRange]="false" *ngIf="payload"
+                            (filterData)="onChangeFilter($event)"></app-filters>
+                    </div>
+                </div>
+                <div class="mat-elevation-z8 style-qG6n4" id="style-qG6n4">
+                    <div class="loaderBox" [hidden]="!flags.showLoader">
+                        <app-loader></app-loader>
+                    </div>
+                    
+                    <div class="example-container" [hidden]="flags.showLoader">
+                        <div class="row">
+                            <div class="col-sm-3">
+
+                                <div class="d-flex">
+
+                                    <!-- <label class="mb-2 dropdownTitle">Parameter</label> -->
+
+                                    <!-- <select class="form-select" [(ngModel)]="selectedOption" (change)="getRecommandParamterDropDown($event)">
+
+                                        <option [value]='null' [disabled]="selectedOption === null">--Select Parameter Here--</option>
+                                        <option value='All'>ALL</option>
+                                        <option *ngFor="let data of parameterDropDownData" [value]="data.Tag_Id">{{data.UI_Display_Name?data.UI_Display_Name:data.Generic_Description}}</option>
+
+                                       
+
+                                    </select> -->
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-sm-9 d-flex justify-content-end" [hidden]="recommendationDataSource.length==0">
+
+                                <mat-paginator [length]="100" [pageSize]="10" #paginator [hidden]="recommendationDataSource.length==0"
+
+                                    [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+
+                                </mat-paginator>
+
+                                <!-- <a (click)="downloadRecommendationData()" [hidden]="recommendationDataSource.length==0">
+
+                                    <span class="material download material-symbols-outlined">
+
+                                        download
+
+                                    </span>
+
+                                </a> -->
+
+                            </div>
+                        </div>
+
+                        <!-- <table class="mat-table style-mKJ5X" id="style-mKJ5X" *ngIf="!showNoData">
+                            
+                          
+                            <thead>
+                                <tr class="mat-header-row">
+                                    <th class="mat-header-cell content">
+                                        Parameter Name
+                                    </th>
+                                    <th class="mat-header-cell content">
+                                        Initial Value
+                                    </th>
+                                    <th class="mat-header-cell content style-MofsM" id="style-MofsM">
+                                        Recommended Value
+                                    </th>
+                                    <th class="mat-header-cell content">
+                                        Acknowledged
+                                    </th>
+                                    <th class="mat-header-cell content style-9aZ9Q" id="style-9aZ9Q">
+                                        Action Taken
+                                    </th>
+                                    <th class="mat-header-cell content">
+                                        Snoozed
+                                    </th>
+                                    <th class="mat-header-cell content">
+                                        Date
+                                    </th>
+                                    <th class="mat-header-cell content">
+                                        Time
+                                    </th>
+                                    <th class="mat-header-cell content">
+                                        Comments
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="mat-row" *ngFor="let item of recommendationDataSource">
+                                    <td class="mat-cell content style-3XYrn" id="style-3XYrn">
+                                        {{item.parameterName}}
+                                    </td>
+                                    <td class="mat-cell content">
+                                        {{item.initialValue?item.initialValue:0}}
+                                    </td>
+                                    <td class="mat-cell content">
+                                        {{item.recommendedValue?item.recommendedValue:0}}
+                                    </td>
+                                    <td class="mat-cell content">
+                                        {{item.isAcknowledged?item.isAcknowledged:'No'}}
+                                    </td>
+                                    <td class="mat-cell content">
+                                        {{item.actionTaken?item.actionTaken:'No'}}
+                                    </td>
+                                    <td class="mat-cell content">
+                                        {{item.is_snoozed?item.is_snoozed:'No'}}
+                                    </td>
+                                  
+                                    <td class="mat-cell content">
+                                        {{item.timestamp?item.timestamp.slice(0,10):'NA'}}
+                                    </td>
+                                    <td class="mat-cell content">
+                                        {{item.timestamp?item.timestamp.slice(11,16):'NA'}}
+                                    </td>
+                                    <td class="mat-cell content">
+                                        {{item.comments?item.comments:'NA'}}
+                                    </td>
+
+                                </tr>
+                               
+                            </tbody>
+                            <tfoot class="mat-table-sticky style-Uvf4p" id="style-Uvf4p">
+                            </tfoot>
+                        </table> -->
+                        <table mat-table matSort (matSortChange)="sortData($event)" [dataSource]="dataSource" [hidden]="recommendationDataSource.length==0">
+                            <ng-container [matColumnDef]="item" *ngFor="let item of keysList;let i=index">
+                                <th mat-header-cell [mat-sort-header]="item" *matHeaderCellDef>{{displayedColumn[i]}}</th>
+                                <!-- <td mat-cell *matCellDef="let element"> 
+                                    <ng-container>
+                                        {{element[item]?element[item].toFixed(2):'N/A'}}
+                                    </ng-container>
+                                </td> -->
+                                <td mat-cell *matCellDef="let element"> {{element[item]?element[item]:'N/A'}} </td>
+                            </ng-container>
+                            <tr mat-header-row *matHeaderRowDef="keysList"></tr>
+                            <tr mat-row *matRowDef="let row; columns: keysList;"></tr>
+                        </table>
+                    </div>
+                    <div class="noDataBox" [hidden]="recommendationDataSource.length!==0">
+                        <span class="text-center">No Data Found</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

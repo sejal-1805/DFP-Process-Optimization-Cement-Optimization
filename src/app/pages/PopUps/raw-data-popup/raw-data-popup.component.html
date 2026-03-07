@@ -1,0 +1,36 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left modal-lg">
+      Raw Data
+    </h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="modalRef?.hide()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    
+    <div class="flex justify-content-center align-items-center" [formGroup]="form">
+      <input
+      formControlName="rawdDatedate"
+      [owlDateTimeTrigger]="dt12"
+      [owlDateTime]="dt12"
+      [selectMode]="'range'"
+      [max]="max"
+      class="form-control mb-2"
+      placeholder="Select Date Range"
+      (dateTimeChange)="downloadRawdata($event)"
+     
+    />
+        <owl-date-time #dt12></owl-date-time>
+      </div>
+    
+    </div>
+  
+    
+    
+ 
+  
