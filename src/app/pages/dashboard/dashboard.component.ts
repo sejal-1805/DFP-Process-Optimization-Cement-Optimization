@@ -752,7 +752,7 @@ export class DashboardComponent implements OnInit {
       title: {
         text: '',
         style:{
-          color:'#fff'
+          color:'[var(--text-color)]'
         }
       },
       plotOptions: {

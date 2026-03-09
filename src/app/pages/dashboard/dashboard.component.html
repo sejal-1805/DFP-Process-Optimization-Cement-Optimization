@@ -77,19 +77,19 @@
             class="bg-[var(--dashboard-graph-bg)] rounded-xl px-3 py-2 h-full flex flex-col gap-2"
           >
             <!-- Title -->
-            <span class="text-[var(--text-color)] text-md mb-2">Daily Basis</span>
+            <span class="text-[var(--text-color)] text-lg mb-2">Daily Basis</span>
 
             <!-- Min / Max / Avg stat pills -->
             <div class="flex items-stretch gap-2">
               <!-- Min -->
               <div
-                class="flex-1 flex flex-col items-center justify-center gap-0.5 rounded-lg border border-[var(--chart-nav-border)] bg-[var(--dashboard-bg,#1a1a1a)] py-2 px-2"
+                class="flex-1 flex flex-col items-center justify-center gap-0.5 rounded-lg border border-[var(--chart-nav-border)] py-2 px-2"
               >
                 <span
-                  class="text-md uppercase tracking-widest text-[var(--text-color)] opacity-60"
+                  class="text-md text-[var(--text-color)] text-lg"
                   >Min</span
                 >
-                <span class="text-xl font-bold text-[var(--card-subtle)]">{{
+                <span class="text-3xl font-bold text-[var(--card-subtle)]">{{
                   throughputValues.minValue.toFixed(2)
                 }}</span>
                 <div
@@ -98,13 +98,13 @@
               </div>
               <!-- Max -->
               <div
-                class="flex-1 flex flex-col items-center justify-center gap-0.5 rounded-lg border border-[var(--chart-nav-border)] bg-[var(--dashboard-bg,#1a1a1a)] py-2 px-2"
+                class="flex-1 flex flex-col items-center justify-center gap-0.5 rounded-lg border border-[var(--chart-nav-border)] py-2 px-2"
               >
                 <span
-                  class="text-md uppercase tracking-widest text-[var(--text-color)] opacity-60"
+                  class="text-md text-[var(--text-color)] text-lg"
                   >Max</span
                 >
-                <span class="text-xl font-bold text-[var(--card-subtle)]">{{
+                <span class="text-3xl font-bold text-[var(--card-subtle)]">{{
                   throughputValues.maxValue.toFixed(2)
                 }}</span>
                 <div
@@ -113,13 +113,13 @@
               </div>
               <!-- Avg -->
               <div
-                class="flex-1 flex flex-col items-center justify-center gap-0.5 rounded-lg border border-[var(--chart-nav-border)] bg-[var(--dashboard-bg,#1a1a1a)] py-2 px-2"
+                class="flex-1 flex flex-col items-center justify-center gap-0.5 rounded-lg border border-[var(--chart-nav-border)] py-2 px-2"
               >
                 <span
-                  class="text-md uppercase tracking-widest text-[var(--text-color)] opacity-60"
+                  class="text-md text-[var(--text-color)] text-lg"
                   >Avg</span
                 >
-                <span class="text-xl font-bold text-[var(--card-subtle)]">{{
+                <span class="text-3xl font-bold text-[var(--card-subtle)]">{{
                   throughputValues.avgValue
                 }}</span>
                 <div
@@ -166,7 +166,7 @@
         <div
           class="flex-1 bg-[var(--dashboard-graph-bg)] rounded-xl px-4 py-3 w-full"
         >
-          <div class="text-[var(--text-color)] font-semibold text-sm">
+          <div class="text-[var(--text-color)] text-lg">
             Weekly Alarm Counts
           </div>
           <div
@@ -179,7 +179,7 @@
             id="chart-container"
             [hidden]="!wklyAlmCountFlags.showWklyAlmCountData"
           >
-            <div class="pie-container" [chart]="chart1"></div>
+            <div class="pie-container text-[var(text-color)]" [chart]="chart1"></div>
           </div>
           <div
             id="chart-container"
@@ -195,7 +195,7 @@
         <div
           class="flex-1 bg-[var(--dashboard-graph-bg)] rounded-xl px-4 py-3 w-full"
         >
-          <div class="text-[var(--text-color)] font-semibold text-sm">
+          <div class="text-[var(--text-color)] text-lg mb-2">
             Monthly Basis Average Throughput
           </div>
           <div
@@ -207,7 +207,7 @@
           <div
             [hidden]="!monthlyAvgThroughputFlags.showMonthlyAvgThroughputData"
           >
-            <div class="w-[400px] mt-1" [chart]="chart2"></div>
+            <div class="w-full mt-2 text-[var(text-color)]" [chart]="chart2"></div>
           </div>
           <div [hidden]="!monthlyAvgThroughputFlags.monthlyAvgThroughputNoData">
             <div
