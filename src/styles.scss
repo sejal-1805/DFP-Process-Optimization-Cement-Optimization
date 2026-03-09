@@ -797,7 +797,7 @@ body {
   --success-bg: #ecffeb;
   --success-text: #245f06;
   --success-border: #10b91b;
-
+  --dashboard-graph-bg:#E4E4E4;
   --alert-card-bg:#f3f4f6;
 
 /* chart */
@@ -834,7 +834,7 @@ body {
   --picker-text: #f3f4f6;
   --picker-border: #374151;
   --picker-hover: #2b3646;
-  --picker-accent: #FD9F35;
+  --picker-accent: #ef9126;
   --input-disable-bg: #1F2021;
   --input-enable-bg: #2B2C2D;
   --input-enable-border: #393A3C;
@@ -845,7 +845,7 @@ body {
   --success-bg: #282a29;
   --success-text: #67ecc7;
   --success-border: #4b4f4d;
-
+  --dashboard-graph-bg:#272727;
   --alert-card-bg: #252525;
 /* chart */
   --chart-nav-border:#393535;
@@ -1817,69 +1817,94 @@ body {
   animation: zoomInOut 1.6s ease-in-out infinite;
 }
 
+/* Radio group layout */
+mat-radio-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
 
-/* Radio button size and color */
+/* Radio button container */
 .mat-mdc-radio-button {
   display: inline-flex !important;
   align-items: center !important;
-
-  .mdc-radio {
-    width: 16px !important;
-    height: 16px !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    vertical-align: middle !important;
-    display: inline-flex !important;      
-    align-items: center !important;        
-    justify-content: center !important;   
-
-    .mdc-radio__native-control {
-      width: 16px !important;
-      height: 16px !important;
-    }
-
-    .mdc-radio__background {
-      width: 16px !important;
-      height: 16px !important;
-
-      .mdc-radio__outer-circle {
-        border-color: var(--picker-accent) !important;
-        border-width: 2px !important;
-      }
-
-      .mdc-radio__inner-circle {
-        border-color: var(--picker-accent) !important;
-        background-color: var(--picker-accent) !important;
-      }
-    }
-  }
-
-  &.mat-mdc-radio-checked {
-    .mdc-radio__outer-circle {
-      border-color: var(--picker-accent) !important;
-    }
-    .mdc-radio__inner-circle {
-      border-color: var(--picker-accent) !important;
-      border-width: 8px !important;
-      transform: scale(0.5) !important;
-    }
-  }
-
-  /* Label text */
-  .mdc-label {
-    font-size: 13px !important;
-    color: var(--text-color) !important;
-    cursor: pointer !important;
-    padding-left: 4px !important;
-    vertical-align: middle !important;
-    line-height: 16px !important;
-    margin: 0 !important;
-  }
 }
 
-/* Ripple color */
+/* Remove focus shadow */
+.mat-mdc-radio-button:focus,
+.mat-mdc-radio-button:focus-visible,
+.mat-mdc-radio-button .mdc-radio:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Radio size */
+.mat-mdc-radio-button .mdc-radio {
+  width: 16px !important;
+  height: 16px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Native control */
+.mat-mdc-radio-button .mdc-radio__native-control {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* Background circle */
+.mat-mdc-radio-button .mdc-radio__background {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+/* Outer circle */
+.mat-mdc-radio-button .mdc-radio__outer-circle {
+  border-color: var(--picker-accent) !important;
+  border-width: 2px !important;
+}
+
+/* Inner circle */
+.mat-mdc-radio-button .mdc-radio__inner-circle {
+  border-color: var(--picker-accent) !important;
+  background-color: var(--picker-accent) !important;
+}
+
+/* Checked state */
+.mat-mdc-radio-button.mat-mdc-radio-checked .mdc-radio__outer-circle {
+  border-color: var(--picker-accent) !important;
+}
+
+.mat-mdc-radio-button.mat-mdc-radio-checked .mdc-radio__inner-circle {
+  border-color: var(--picker-accent) !important;
+  border-width: 8px !important;
+  transform: scale(0.5) !important;
+}
+
+/* Label text */
+.mat-mdc-radio-button .mdc-label {
+  font-size: 13px !important;
+  color: var(--text-color) !important;
+  padding-left: 4px !important;
+  line-height: 16px !important;
+  cursor: pointer;
+}
+
+/* Disabled state */
+.mat-mdc-radio-button.mat-mdc-radio-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.mat-mdc-radio-button.mat-mdc-radio-disabled .mdc-label {
+  cursor: not-allowed;
+}
+
+/* Remove ripple shadow */
 .mat-mdc-radio-button .mat-ripple-element,
 .mat-mdc-radio-button .mdc-radio__ripple {
-  background-color: var(--picker-accent) !important;
-  opacity: 0.1 !important;
+  display: none !important;
 }
