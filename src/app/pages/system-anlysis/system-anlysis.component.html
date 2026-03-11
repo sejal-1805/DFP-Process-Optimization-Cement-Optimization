@@ -29,7 +29,9 @@
   </div>
 
   <!-- {{flags.showLoader}} -->
-  <div class="custom-scrollbar w-full rounded-lg border border-[var(--form-border)] overflow-hidden">
+  <div
+    class="custom-scrollbar w-full rounded-lg border border-[var(--form-border)] overflow-hidden"
+  >
     <!-- <div class="card card_apply mb-2">
       <div class="row">
         <div class="col-sm-5 page-title">
@@ -65,15 +67,19 @@
       <!-- {{dataSource}} -->
       <app-loader></app-loader>
     </div>
-    <div class="row mb-2" [hidden]="flags.showLoader">
+    <div class="flex flex-row mb-2 gap-2 m-1" [hidden]="flags.showLoader">
       <div
         class="col-md-6 col-sm-6 col-xs-12"
         *ngIf="dataSource && dataSource.Resultant_Tags_Data.length > 0"
       >
-        <div class="card card_apply">
-          <div class="card-body">
-            <p class="card-text titlecls">RESULTANT PARAMETERS</p>
-            <hr color="#636363" />
+        <div>
+          <div
+            class="bg-[var(--dashboard-graph-bg)] rounded-xl px-3 py-2 h-[600px] custom-scrollbar overflow-auto"
+          >
+            <p class="text-[var(--text-color)] text-[14px] mb-2">
+              RESULTANT PARAMETERS
+            </p>
+            <!-- <hr color="#636363" /> -->
             <app-gauge-graph
               [datasorce]="dataSource.Resultant_Tags_Data"
               [payload]="payload"
@@ -87,48 +93,69 @@
         class="col-md-6 col-sm-6 col-xs-12"
         *ngIf="dataSource && dataSource.Control_Tags_Data.length > 0"
       >
-        <div class="card card_apply">
-          <div class="card-body">
-            <p class="titlecls">CONTROL PARAMETERS</p>
-            <hr color="#636363" />
-            <div class="row">
-              <div class="col-12">
-                <app-control-gauge
-                  [datasorce]="dataSource.Control_Tags_Data"
-                  [payload]="payload"
-                  [timestamp]="dataSource.timestamp"
-                  type="controlable"
-                ></app-control-gauge>
-              </div>
-            </div>
+        <div>
+          <div
+            class="bg-[var(--dashboard-graph-bg)] rounded-xl px-3 py-2 h-[600px] custom-scrollbar overflow-auto"
+          >
+            <p class="text-[var(--text-color)] text-[14px] mb-2">
+              CONTROL PARAMETERS
+            </p>
+            <!-- <hr color="#636363" /> -->
+            <!-- <div class="row"> -->
+            <!-- <div class="col-12"> -->
+            <app-control-gauge
+              [datasorce]="dataSource.Control_Tags_Data"
+              [payload]="payload"
+              [timestamp]="dataSource.timestamp"
+              type="controlable"
+            ></app-control-gauge>
+            <!-- </div> -->
+            <!-- </div> -->
           </div>
         </div>
       </div>
 
       <!-- {{dataSource && dataSource.Control_Tags_Data.length==0 && dataSource.Resultant_Tags_Data.length==0}} -->
-      <div class="col-12" *ngIf="getCementLatestData">
-        <div class="noDataBox">
-          <!-- {{dataSource | json}} -->
-          <!-- {{dataSource.Control_Tags_Data.length == 0}} -->
-          <span class="text-center">No Data Found</span>
+      <div
+        class="flex items-center justify-center ml-10 py-6"
+        *ngIf="getCementLatestData"
+      >
+        <div
+          class="flex flex-col items-center text-center border border-[var(--form-border)] rounded-lg px-6 py-3"
+        >
+          <div class="text-3xl mb-3 zoom-animation">🔍</div>
+
+          <!-- Title -->
+          <h2 class="text-lg font-semibold text-[var(--leftdrawer-text)] mb-2">
+            No Data Found
+          </h2>
+
+          <!-- Description -->
+          <p class="text-sm text-[var(--card-subtle)] mb-1">
+            Try changing the filters or refresh the data
+          </p>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-
 <!-- modal component -->
 <ng-template #recommedationtemplate>
-  <div class="modal-content">
-    <div class="modal-header align-items-center">
-      <h4 class="modal-title-heading">
+  <div
+    class="bg-[var(--bg-leftdrawer-footer)] rounded-md px-2 py-2 items-center justify-between w-[90vw]"
+  >
+    <div class="flex items-center justify-between mx-2">
+      <h4 class="text-[var(--text-color)] text-[15px] ml-2">
         Acknowledge Recommendation(
         {{ recommendationDate ? recommendationDate : "" }})
       </h4>
 
-      <button class="btn btnSubmit" (click)="modalRef?.hide(); closeRecomPop()">
-        Close
+      <button
+        class="text-[var(--text-color)] cursor-pointer px-2 py-1"
+        (click)="modalRef?.hide(); closeRecomPop()"
+      >
+        <span class="material-symbols-outlined text-[22px]">close</span>
       </button>
     </div>
     <div class="modal-body">
@@ -145,107 +172,124 @@
         <div class="col-2">
           <button
             type="button"
-            class="btn btnSubmit"
+            class="h-[25px] w-[60px] shrink-0 flex items-center justify-center cursor-pointer px-2 rounded-md border border-[var(--button-border)] bg-[var(--submit-button-bg)] hover:bg-[var(--submit-button-hover-bg)] text-[#111111] transition-all duration-200"
             (click)="getRecommendationPopupData()"
           >
             Submit
           </button>
         </div>
       </div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Parameter Type</th>
-            <th>Initial Value</th>
-            <th>Recommended Value</th>
-            <th>Remarks</th>
-            <th>Acknowledge</th>
-            <th>Action Taken</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody
-          id="style-OqqBV"
-          class="style-OqqBV"
-          *ngIf="!recommendationcheckData"
-        >
-          <tr class="mat-row" *ngFor="let item of recommendationDataSource">
-            <td class="mat-cell content text-align-left">
-              {{ item.parameterName ? item.parameterName : "NA" }}
-            </td>
-            <td class="mat-cell content">
-              {{ item.initialValue ? item.initialValue.toFixed(0) : 0 }}
-            </td>
-            <td class="mat-cell content">
-              {{ item.recommendedValue ? item.recommendedValue : 0 }}
-            </td>
-            <td class="mat-cell content">
-              <div class="comment_box" [hidden]="!showEditIcon">
-                <span style="margin-right: 10px" [hidden]="item.showTextBox"
-                  >{{ item.comments }}
-                </span>
-                <div class="editIcon content-center">
-                  <span
-                    class="material material-symbols-outlined"
-                    (click)="showTextBox(item)"
-                    [hidden]="item.showTextBox"
-                  >
-                    edit
+
+      <div
+        class="custom-scrollbar w-full overflow-auto rounded-lg border border-[var(--form-border)]"
+      >
+        <table class="w-full border-collapser">
+          <thead
+            class="sticky bg-gradient-to-r from-orange-400 to-orange-300 text-[#111111]"
+          >
+            <tr>
+              <th class="pl-2.5">Parameter Type</th>
+              <th>Initial Value</th>
+              <th>Recommended Value</th>
+              <th>Remarks</th>
+              <th>Acknowledge</th>
+              <th>Action Taken</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody
+            id="style-OqqBV"
+            class="style-OqqBV"
+            *ngIf="!recommendationcheckData"
+          >
+            <tr
+              class="text-[var(--text-color)] text-left px-4 py-1 whitespace-nowrap border-b border-[var(--form-border)]"
+              *ngFor="let item of recommendationDataSource"
+            >
+              <td class="pl-2.5">
+                {{ item.parameterName ? item.parameterName : "NA" }}
+              </td>
+              <td class="mat-cell content">
+                {{ item.initialValue ? item.initialValue.toFixed(0) : 0 }}
+              </td>
+              <td class="mat-cell content">
+                {{ item.recommendedValue ? item.recommendedValue : 0 }}
+              </td>
+              <td class="mat-cell content">
+                <div class="comment_box" [hidden]="!showEditIcon">
+                  <span style="margin-right: 10px" [hidden]="item.showTextBox"
+                    >{{ item.comments }}
                   </span>
+                  <div class="text-[var(--text-color)] cursor-pointer">
+                    <span
+                      class="material material-symbols-outlined text-blue-500"
+                      (click)="showTextBox(item)"
+                      [hidden]="item.showTextBox"
+                    >
+                      edit
+                    </span>
+                  </div>
                 </div>
-              </div>
-              <div class="textBox" [hidden]="!item.showTextBox">
-                <textarea
-                  matInput
-                  cdkTextareaAutosize
-                  #autosize="cdkTextareaAutosize"
-                  cdkAutosizeMinRows="1"
-                  cdkAutosizeMaxRows="5"
-                  [(ngModel)]="item.comments"
-                ></textarea>
+                <div class="textBox" [hidden]="!item.showTextBox">
+                  <textarea
+                    matInput
+                    cdkTextareaAutosize
+                    #autosize="cdkTextareaAutosize"
+                    cdkAutosizeMinRows="1"
+                    cdkAutosizeMaxRows="5"
+                    [(ngModel)]="item.comments"
+                    class="focus:ring-2 focus:ring-[var(--picker-accent)] focus:outline-none"
+                  ></textarea>
+
+                  <button
+                    type="button"
+                    class="text-[var(--text-color)] cursor-pointer duration-200"
+                    aria-label="Close"
+                    (click)="showTextBox(item)"
+                  >
+                    <span class="material-symbols-outlined text-[18px]"
+                      >close</span
+                    >
+                  </button>
+                </div>
+              </td>
+
+              <td class="mat-cell content">
+                <input
+                  type="checkbox"
+                  id="vehicle1"
+                  [checked]="item.isAcknowledged === 'Yes'"
+                  (change)="checkBoxAck($event, item)"
+                  class="w-4 h-4 cursor-pointer accent-[var(--picker-accent)]"
+                />
+              </td>
+
+              <td class="mat-cell content">
+                <mat-radio-group [(ngModel)]="item.actionTaken">
+                  <mat-radio-button [value]="true">Yes </mat-radio-button>
+                  <mat-radio-button [value]="false">No</mat-radio-button>
+                </mat-radio-group>
+              </td>
+
+              <td>
                 <button
-                  type="button"
-                  class="close"
-                  aria-label="Close"
-                  (click)="showTextBox(item)"
+                  class="btn btnSubmit inlineUpdate"
+                  (click)="updateRecommendation(item)"
                 >
-                  <span aria-hidden="true">&times;</span>
+                  Update
                 </button>
-              </div>
-            </td>
-
-            <td class="mat-cell content">
-              <input
-                type="checkbox"
-                id="vehicle1"
-                [checked]="item.isAcknowledged === 'Yes'"
-                (change)="checkBoxAck($event, item)"
-              />
-            </td>
-
-            <td class="mat-cell content">
-              <mat-radio-group [(ngModel)]="item.actionTaken">
-                <mat-radio-button [value]="true">Yes </mat-radio-button>
-                <mat-radio-button [value]="false">No</mat-radio-button>
-              </mat-radio-group>
-            </td>
-
-            <td>
-              <button
-                class="btn btnSubmit inlineUpdate"
-                (click)="updateRecommendation(item)"
-              >
-                Update
-              </button>
-            </td>
-          </tr>
-        </tbody>
-        <tbody *ngIf="recommendationcheckData">
-          <tr>
-            <td colspan="6" class="recommendation_notFound">No Record Found</td>
-          </tr>
-        </tbody>
-      </table>
+              </td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="recommendationcheckData">
+            <tr>
+              <td colspan="6" class="text-center">
+                No Record Found
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <div class="modal-footer"></div>
   </div>

@@ -1,10 +1,15 @@
-<!-- <div class="flex gap-2 w-full" *ngIf="showRange; else withoutRange">
-  <div class="col-4 col-md-4 col-sm-4">
+<div
+  class="flex flex-col gap-2 w-full my-2"
+  *ngIf="showRange; else withoutRange"
+>
+  <div class="w-full">
     <form #myForm="ngForm">
-      <div >
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 px-3 items-end">
-          <div class="flex flex-col">
-            <label class="-mb-2 text-[var(--text-color)]">Plant</label>
+      <div>
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 px-3 items-end"
+        >
+          <div class="flex flex-col gap-2">
+            <label class="mb-0 text-[var(--text-color)]">Plant</label>
             <select
               class="w-full min-h-[29px] px-1 py-0.5 text-[13px] rounded-lg cursor-pointer outline-none bg-[var(--input-enable-bg)] border border-[var(--input-enable-border)] text-[var(--select-input-value)]"
               name="filtersData.Plant_Code"
@@ -21,7 +26,7 @@
             </select>
           </div>
           <div class="flex flex-col gap-2">
-            <label class="-mb-2 text-[var(--text-color)]">Mill No.</label>
+            <label class="mb-0 text-[var(--text-color)]">Mill No.</label>
             <select
               class="w-full min-h-[29px] px-1 py-0.5 text-[13px] rounded-lg cursor-pointer outline-none bg-[var(--input-enable-bg)] border border-[var(--input-enable-border)] text-[var(--select-input-value)]"
               name="filtersData.Mill"
@@ -36,7 +41,7 @@
             </select>
           </div>
           <div class="flex flex-col gap-2">
-            <label class="-mb-2 text-[var(--text-color)]">Grade</label>
+            <label class="mb-0 text-[var(--text-color)]">Grade</label>
             <select
               class="w-full min-h-[29px] px-1 py-0.5 text-[13px] rounded-lg cursor-pointer outline-none bg-[var(--input-enable-bg)] border border-[var(--input-enable-border)] text-[var(--select-input-value)]"
               name="filtersData.Grade"
@@ -83,7 +88,7 @@
           </div>
           <button
             type="button"
-            class="cursor-pointer px-4 py-1 rounded-md border border-[var(--button-border)] bg-[var(--submit-button-bg)] hover:bg-[var(--submit-button-hover-bg)] text-[#111111] font-medium transition-all duration-200"
+            class="h-[29px] w-[80px] shrink-0 cursor-pointer px-2 rounded-md border border-[var(--button-border)] bg-[var(--submit-button-bg)] hover:bg-[var(--submit-button-hover-bg)] text-[#111111] text-sm font-medium transition-all duration-200"
             [disabled]="
               !myForm.valid ||
               filtersData.Plant_Code === 'null' ||
@@ -99,34 +104,31 @@
     </form>
   </div>
 
-  <div class="col-4 col-md-4 col-sm-4">
+  <!-- Blaine Range -->
+  <div class="w-full">
     <div class="card_apply rangeBox">
-      <div class="row">
-        <div class="col-10">
-          <div class="d-flex flex-column h-100">
-            <label class="mb-2 text-[var(--text-color)]"
-              >Select Desired Blaine Range</label
-            >
-            <mat-radio-group>
-              <mat-radio-button
-                *ngFor="let item of rangeData"
-                [value]="true"
-                [checked]="item.Active === true"
-                (change)="updateBlaineRangeRadio(item)"
-                >{{ item.BLAIN_MIN }}-{{ item.BLAIN_MAX }}</mat-radio-button
-              >
-            </mat-radio-group>
-          </div>
-        </div>
-        <div class="col-2 px-2 content-center">
-          <button
-            type="button"
-            class="cursor-pointer px-4 py-1 rounded-md border border-[var(--button-border)] bg-[var(--submit-button-bg)] hover:bg-[var(--submit-button-hover-bg)] text-[#111111] font-medium transition-all duration-200"
-            (click)="updateBlaineRange()"
+      <div class="flex items-center gap-4 px-3 py-1">
+        <label class="text-[var(--text-color)] whitespace-nowrap shrink-0"
+          >Select Desired Blaine Range:</label
+        >
+        <mat-radio-group
+          class="flex flex-wrap items-center gap-3 text-[var(--text-color)]"
+        >
+          <mat-radio-button
+            *ngFor="let item of rangeData"
+            [value]="true"
+            [checked]="item.Active === true"
+            (change)="updateBlaineRangeRadio(item)"
+            >{{ item.BLAIN_MIN }}-{{ item.BLAIN_MAX }}</mat-radio-button
           >
-            Update
-          </button>
-        </div>
+        </mat-radio-group>
+        <button
+          type="button"
+          class="shrink-0 h-[29px] px-3 cursor-pointer rounded-md border border-[var(--button-border)] bg-[var(--submit-button-bg)] hover:bg-[var(--submit-button-hover-bg)] text-[#111111] text-sm font-medium transition-all duration-200"
+          (click)="updateBlaineRange()"
+        >
+          Update
+        </button>
       </div>
     </div>
   </div>
@@ -137,9 +139,11 @@
     <div class="col-12">
       <form #myForm="ngForm">
         <div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 px-3 py-1 items-end">
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 px-3 py-1 items-end"
+          >
             <div class="flex flex-col gap-2">
-              <label class="-mb-1 text-[var(--text-color)]">Plant</label>
+              <label class="mb-0 text-[var(--text-color)]">Plant</label>
               <select
                 class="w-full min-h-[29px] px-1 py-0.5 text-[13px] rounded-lg cursor-pointer outline-none bg-[var(--input-enable-bg)] border border-[var(--input-enable-border)] text-[var(--select-input-value)]"
                 name="filtersData.Plant_Code"
@@ -155,244 +159,8 @@
                 </option>
               </select>
             </div>
-
             <div class="flex flex-col gap-2">
-              <label class="-mb-1 text-[var(--text-color)]">Mill No.</label>
-              <select
-                class="w-full min-h-[29px] px-1 py-0.5 text-[13px] rounded-lg cursor-pointer outline-none bg-[var(--input-enable-bg)] border border-[var(--input-enable-border)] text-[var(--select-input-value)]"
-                name="filtersData.Mill"
-                (change)="getGradeBasesPlantMills()"
-                [(ngModel)]="filtersData.Mill"
-                required
-              >
-                <option [value]="null" disabled>--Select Mill Here --</option>
-                <option *ngFor="let item of millsData" [value]="item.value">
-                  {{ item.viewValue }}
-                </option>
-              </select>
-            </div>
-
-            <div class="flex flex-col gap-2">
-              <label class="-mb-1 text-[var(--text-color)]">Grade</label>
-              <select
-                class="w-full min-h-[29px] px-1 py-0.5 text-[13px] rounded-lg cursor-pointer outline-none bg-[var(--input-enable-bg)] border border-[var(--input-enable-border)] text-[var(--select-input-value)]"
-                name="filtersData.Grade"
-                [(ngModel)]="filtersData.Grade"
-                required
-              >
-                <option [value]="null" disabled>--Select Grade Here --</option>
-                <option *ngFor="let item of gradeData" [value]="item.value">
-                  {{ item.viewValue }}
-                </option>
-              </select>
-            </div>
-
-            <div class="flex flex-col gap-2">
-              <div class="flex flex-col" *ngIf="type == 'rangepicker'">
-                <label class="text-[var(--text-color)]">Date Range</label>
-                <app-datetimepicker
-                  [type]="type"
-                  *ngIf="filtersData"
-                  [selectedRange]="filtersData.dateRange"
-                  (dateTimeRange)="onSelectDateRange($event)"
-                ></app-datetimepicker>
-              </div>
-              <div class="flex flex-col" *ngIf="type == 'datepicker'">
-                <label class="- text-[var(--text-color)]">Date</label>
-                <app-datetimepicker
-                  [type]="type"
-                  *ngIf="filtersData"
-                  [date_time]="filtersData.dateTime"
-                  (dateTime)="onSelectDatetime($event)"
-                ></app-datetimepicker>
-              </div>
-              <div class="flex flex-col" *ngIf="type == 'datepicker1'">
-                <label class="text-[var(--text-color)]">Date</label>
-                <app-datetimepicker
-                  [type]="type"
-                  *ngIf="filtersData"
-                  [date_times]="filtersData.dateTime"
-                  (dateTimes)="onSelectDatetimes($event)"
-                ></app-datetimepicker>
-              </div>
-            </div>
-
-            <button
-              type="button"
-              class="w-20 h-[29px] flex items-center justify-center cursor-pointer px-4 py-0 rounded-md border border-[var(--button-border)] bg-[var(--submit-button-bg)] hover:bg-[var(--submit-button-hover-bg)] text-[#111111] font-medium transition-all duration-200"
-              [disabled]="
-                !myForm.valid ||
-                filtersData.Plant_Code === 'null' ||
-                filtersData.Mill === 'null' ||
-                filtersData.Grade === 'null'
-              "
-              (click)="onSubmit()"
-            >
-              Submit
-            </button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-</ng-template> -->
-
-
-
-
-<div class="flex flex-col gap-2 w-full mb-2" *ngIf="showRange; else withoutRange">
-  <div class="w-full">
-    <form #myForm="ngForm">
-      <div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 px-3 items-end">
-          <div class="flex flex-col">
-            <label class="-mb-2 text-[var(--text-color)]">Plant</label>
-            <select
-              class="w-full min-h-[29px] px-1 py-0.5 text-[13px] rounded-lg cursor-pointer outline-none bg-[var(--input-enable-bg)] border border-[var(--input-enable-border)] text-[var(--select-input-value)]"
-              name="filtersData.Plant_Code"
-              [(ngModel)]="filtersData.Plant_Code"
-              (change)="getMillsBasesPlant(); getPlantname(filtersData.Plant_Code)"
-              required
-            >
-              <option value="null" disabled>--Select Plant Here --</option>
-              <option *ngFor="let item of plantData" [value]="item.value">
-                {{ item.viewValue }}
-              </option>
-            </select>
-          </div>
-          <div class="flex flex-col gap-2">
-            <label class="-mb-2 text-[var(--text-color)]">Mill No.</label>
-            <select
-              class="w-full min-h-[29px] px-1 py-0.5 text-[13px] rounded-lg cursor-pointer outline-none bg-[var(--input-enable-bg)] border border-[var(--input-enable-border)] text-[var(--select-input-value)]"
-              name="filtersData.Mill"
-              (change)="getGradeBasesPlantMills()"
-              [(ngModel)]="filtersData.Mill"
-              required
-            >
-              <option [value]="null" disabled>--Select Mill Here --</option>
-              <option *ngFor="let item of millsData" [value]="item.value">
-                {{ item.viewValue }}
-              </option>
-            </select>
-          </div>
-          <div class="flex flex-col gap-2">
-            <label class="-mb-2 text-[var(--text-color)]">Grade</label>
-            <select
-              class="w-full min-h-[29px] px-1 py-0.5 text-[13px] rounded-lg cursor-pointer outline-none bg-[var(--input-enable-bg)] border border-[var(--input-enable-border)] text-[var(--select-input-value)]"
-              name="filtersData.Grade"
-              [(ngModel)]="filtersData.Grade"
-              required
-            >
-              <option [value]="null" disabled>--Select Grade Here --</option>
-              <option *ngFor="let item of gradeData" [value]="item.value">
-                {{ item.viewValue }}
-              </option>
-            </select>
-          </div>
-          <div class="flex flex-col gap-2">
-            <div class="flex flex-col" *ngIf="type == 'rangepicker'">
-              <label class="text-[var(--text-color)]">Date Range</label>
-              <app-datetimepicker
-                [type]="type"
-                *ngIf="filtersData"
-                [selectedRange]="filtersData.dateRange"
-                (dateTimeRange)="onSelectDateRange($event)"
-                class="m2-10"
-              ></app-datetimepicker>
-            </div>
-            <div class="flex flex-col" *ngIf="type == 'datepicker'">
-              <label class="text-[var(--text-color)]">Date</label>
-              <app-datetimepicker
-                [type]="type"
-                *ngIf="filtersData"
-                [date_time]="filtersData.dateTime"
-                (dateTime)="onSelectDatetime($event)"
-                class="m2-10"
-              ></app-datetimepicker>
-            </div>
-            <div class="flex flex-col" *ngIf="type == 'datepicker1'">
-              <label class="mb-2 text-[var(--text-color)]">Date</label>
-              <app-datetimepicker
-                [type]="type"
-                *ngIf="filtersData"
-                [date_times]="filtersData.dateTime"
-                (dateTimes)="onSelectDatetimes($event)"
-                class="m2-10"
-              ></app-datetimepicker>
-            </div>
-          </div>
-          <button
-            type="button"
-            class="cursor-pointer px-4 py-1 rounded-md border border-[var(--button-border)] bg-[var(--submit-button-bg)] hover:bg-[var(--submit-button-hover-bg)] text-[#111111] font-medium transition-all duration-200"
-            [disabled]="
-              !myForm.valid ||
-              filtersData.Plant_Code === 'null' ||
-              filtersData.Mill === 'null' ||
-              filtersData.Grade === 'null'
-            "
-            (click)="onSubmit()"
-          >
-            Submit
-          </button>
-        </div>
-      </div>
-    </form>
-  </div>
-
-  <!-- Blaine Range - below fields in one row -->
-  <div class="w-full">
-    <div class="card_apply rangeBox">
-      <div class="flex items-center gap-4 px-3 py-1">
-        <div class="flex-1">
-          <div class="flex items-center flex-row gap-2">
-            <label class="mb-2 text-[var(--text-color)] whitespace-nowrap shrink-0">Select Desired Blaine Range: </label>
-            <mat-radio-group class="flex flex-wrap items-center gap-3">
-              <mat-radio-button
-                *ngFor="let item of rangeData"
-                [value]="true"
-                [checked]="item.Active === true"
-                (change)="updateBlaineRangeRadio(item)"
-              >{{ item.BLAIN_MIN }}-{{ item.BLAIN_MAX }}</mat-radio-button>
-            </mat-radio-group>
-          </div>
-        </div>
-        <div class="flex items-center px-2">
-          <button
-            type="button"
-            class="cursor-pointer px-4 py-1 rounded-md border border-[var(--button-border)] bg-[var(--submit-button-bg)] hover:bg-[var(--submit-button-hover-bg)] text-[#111111] font-medium transition-all duration-200"
-            (click)="updateBlaineRange()"
-          >
-            Update
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<ng-template #withoutRange>
-  <div class="row">
-    <div class="col-12">
-      <form #myForm="ngForm">
-        <div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 px-3 py-1 items-end">
-            <div class="flex flex-col gap-2">
-              <label class="-mb-1 text-[var(--text-color)]">Plant</label>
-              <select
-                class="w-full min-h-[29px] px-1 py-0.5 text-[13px] rounded-lg cursor-pointer outline-none bg-[var(--input-enable-bg)] border border-[var(--input-enable-border)] text-[var(--select-input-value)]"
-                name="filtersData.Plant_Code"
-                [(ngModel)]="filtersData.Plant_Code"
-                (change)="getMillsBasesPlant(); getPlantname(filtersData.Plant_Code)"
-                required
-              >
-                <option value="null" disabled>--Select Plant Here --</option>
-                <option *ngFor="let item of plantData" [value]="item.value">
-                  {{ item.viewValue }}
-                </option>
-              </select>
-            </div>
-            <div class="flex flex-col gap-2">
-              <label class="-mb-1 text-[var(--text-color)]">Mill No.</label>
+              <label class="mb-0 text-[var(--text-color)]">Mill No.</label>
               <select
                 class="w-full min-h-[29px] px-1 py-0.5 text-[13px] rounded-lg cursor-pointer outline-none bg-[var(--input-enable-bg)] border border-[var(--input-enable-border)] text-[var(--select-input-value)]"
                 name="filtersData.Mill"
@@ -407,7 +175,7 @@
               </select>
             </div>
             <div class="flex flex-col gap-2">
-              <label class="-mb-1 text-[var(--text-color)]">Grade</label>
+              <label class="mb-0 text-[var(--text-color)]">Grade</label>
               <select
                 class="w-full min-h-[29px] px-1 py-0.5 text-[13px] rounded-lg cursor-pointer outline-none bg-[var(--input-enable-bg)] border border-[var(--input-enable-border)] text-[var(--select-input-value)]"
                 name="filtersData.Grade"
@@ -451,7 +219,7 @@
             </div>
             <button
               type="button"
-              class="w-20 h-[29px] flex items-center justify-center cursor-pointer px-4 py-0 rounded-md border border-[var(--button-border)] bg-[var(--submit-button-bg)] hover:bg-[var(--submit-button-hover-bg)] text-[#111111] font-medium transition-all duration-200"
+              class="h-[29px] w-[80px] shrink-0 flex items-center justify-center cursor-pointer px-2 rounded-md border border-[var(--button-border)] bg-[var(--submit-button-bg)] hover:bg-[var(--submit-button-hover-bg)] text-[#111111] text-sm font-medium transition-all duration-200"
               [disabled]="
                 !myForm.valid ||
                 filtersData.Plant_Code === 'null' ||

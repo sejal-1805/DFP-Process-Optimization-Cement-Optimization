@@ -120,7 +120,7 @@
 //     }
 //   }
 // } 
-  
+
 
 // table.mat-table { 
 //   border-spacing: 0;
@@ -243,7 +243,7 @@
 //     flex:  1 1 auto; 
 //     min-height:  1px; 
 //     padding:  1rem;
-    
+
 //   } 
 
 //   .card { 
@@ -698,7 +698,7 @@
 //     outline: 0;
 //   } 
 
- 
+
 // }     
 
 
@@ -716,7 +716,7 @@
 //     border-radius: .3rem; 
 //     outline: 0;
 //   } 
-   
+
 
 // .modal-content[_ngcontent-wtf-c130] { 
 //     min-height: 100%; 
@@ -745,7 +745,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 body {
   font-family: var(--font-inter);
 }
@@ -756,7 +756,7 @@ body {
   --bg-color: #F6F5F3;
   --bg-header: #FE8F12;
   --header-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-  --leftdrawer-text:#404242;
+  --leftdrawer-text: #404242;
   --bg-leftdrawer: #F2F2F2;
   --bg-leftdrawer-footer: #eaeaea;
   --left-drawer-active-tab: #FD9F35;
@@ -789,36 +789,32 @@ body {
   --form-border: #CCCCCC;
   --status-active-bg: #C8D4A6;
   --status-active-text: #47502F;
-  --status-inactive-bg:  rgba(250, 79, 79, 0.3);
+  --status-inactive-bg: rgba(250, 79, 79, 0.3);
   --status-inactive-text: #B40000;
-  --select-input:rgb(236, 236, 236);
-  --select-input-hover:rgb(243, 243, 243);
-  --select-input-value:#635b5b; 
+  --select-input: rgb(236, 236, 236);
+  --select-input-hover: rgb(243, 243, 243);
+  --select-input-value: #635b5b;
   --success-bg: #ecffeb;
   --success-text: #245f06;
   --success-border: #10b91b;
-  --dashboard-graph-bg:#E4E4E4;
-  --alert-card-bg:#f3f4f6;
+  --dashboard-graph-bg: #E4E4E4;
+  --alert-card-bg: #f3f4f6;
+  --chart-card-border: #676363;
 
-/* chart */
-  --chart-nav-border:#D6D6D7;
-  --chart-cards-bg:#FFFFFF;
-  --chart-options-bg:#A2B3B2;
-  --tags-bottom-border:#D7C8C8;
-
-// process optimization chart colors
-  --pie-color-1: #fb7185;  
-  --pie-color-2: #22d3ee; 
-
+  /* chart */
+  --chart-nav-border: #D6D6D7;
+  --chart-cards-bg: #FFFFFF;
+  --chart-options-bg: #A2B3B2;
+  --tags-bottom-border: #D7C8C8;
 }
- 
+
 .dark {
   --text-color: #F0F0F0;
   --title: #FFC07A;
   --bg-color: #1E1E1F;
   --bg-header: #181919;
   --header-shadow: 0 2px 6px rgba(255, 255, 255, 0.25);
-  --leftdrawer-text:#B7C5C5;
+  --leftdrawer-text: #B7C5C5;
   --bg-leftdrawer: #181919;
   --bg-leftdrawer-footer: #2B2C2D;
   --left-drawer-active-tab: #FD9F35;
@@ -831,9 +827,9 @@ body {
   --search-bg: rgba(47, 43, 43, 0.25);
   --search-placeholder: #888888;
   --search-border: rgba(255, 255, 255, 0.18);
-  --select-input:rgb(63, 61, 61);
-  --select-input-hover:rgb(52, 51, 51);
-  --select-input-value:#d5d5d5;
+  --select-input: rgb(63, 61, 61);
+  --select-input-hover: rgb(52, 51, 51);
+  --select-input-value: #d5d5d5;
   --picker-bg: #1f2937;
   --picker-text: #f3f4f6;
   --picker-border: #374151;
@@ -849,38 +845,72 @@ body {
   --success-bg: #282a29;
   --success-text: #67ecc7;
   --success-border: #4b4f4d;
-  --dashboard-graph-bg:#272727;
+  --dashboard-graph-bg: #272727;
   --alert-card-bg: #252525;
-/* chart */
-  --chart-nav-border:#393535;
-  --chart-cards-bg:#222020;
-  --chart-options-bg:#535858;
-  --tags-bottom-border:#535353;
+  --chart-card-border: #5e5b5b;
+
+  /* chart */
+  --chart-nav-border: #393535;
+  --chart-cards-bg: #222020;
+  --chart-options-bg: #535858;
+  --tags-bottom-border: #535353;
 
 }
- 
+
 .title-font {
   font-family: var(--font-poppins);
 }
 
+.highcharts-series rect.highcharts-point {
+  fill: #22d3ee !important;
+  stroke: #22d3ee !important;
+}
+
+//Process Optimization home page modal
+.modal-dialog {
+  margin-left: 5vw !important;
+  margin-right: auto !important;
+  min-height: calc(100vh - 60px);
+}
+
+ngx-gauge svg {
+  width: 100% !important;
+  height: auto !important;
+}
+
+ngx-gauge .reading-block {
+  font-size: 13px !important;
+  color: var(--text-color) !important;
+}
+
+ngx-gauge .reading-affix {
+  font-size: 12px !important;
+  color: var(--text-color) !important;
+}
+
 /* SCROLLBAR STYLE */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 4px;   /* 👈 vertical scrollbar thickness */
-  height: 4px;  /* horizontal scrollbar thickness */
+  width: 4px;
+  /* 👈 vertical scrollbar thickness */
+  height: 4px;
+  /* horizontal scrollbar thickness */
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background-color: var(--bg-main-container);      /* light gray track */
+  background-color: var(--bg-main-container);
+  /* light gray track */
   border-radius: 4px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #a1a1a1;      /* orange thumb */
+  background: #a1a1a1;
+  /* orange thumb */
   border-radius: 4px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #a1a1a1;      /* darker orange on hover */
+  background: #a1a1a1;
+  /* darker orange on hover */
 }
 
 /* ===== FIX REACT DATEPICKER BROKEN LAYOUT ===== */
@@ -908,6 +938,7 @@ body {
   inset: auto auto auto 0 !important;
   /* transform: translate3d(0, 40px, 0) !important;  REMOVED */
 }
+
 /* Main calendar container */
 .react-datepicker {
   font-family: inherit !important;
@@ -932,16 +963,19 @@ body {
   color: var(--text-color) !important;
   font-weight: 600;
   font-size: 0.9rem;
-   padding: 6px 0;
+  padding: 6px 0;
 }
 
 
 .react-datepicker__day-name,
 .react-datepicker__day {
-   color: var(--text-color) !important;
-  width: 1.8rem; /* Smaller width */
-  line-height: 1.8rem; /* Smaller height */
-  margin: 0.1rem; /* Smaller margin between cells */
+  color: var(--text-color) !important;
+  width: 1.8rem;
+  /* Smaller width */
+  line-height: 1.8rem;
+  /* Smaller height */
+  margin: 0.1rem;
+  /* Smaller margin between cells */
 }
 
 /* Days */
@@ -991,7 +1025,8 @@ body {
 /* ===== TIME LIST - FIXED HEIGHT WITH SCROLL ===== */
 .react-datepicker__time-list {
   padding: 0 !important;
-  height: 150px !important; /* Fixed height - shows about 7 items */
+  height: 150px !important;
+  /* Fixed height - shows about 7 items */
   overflow-y: auto !important;
   scrollbar-width: thin;
   scrollbar-color: var(--picker-accent) var(--form-border);
@@ -1020,7 +1055,8 @@ body {
 .react-datepicker__time-list-item {
   color: var(--text-color) !important;
   padding: 6px 10px !important;
-  height: 30px !important; /* Fixed height for each time item */
+  height: 30px !important;
+  /* Fixed height for each time item */
   line-height: 18px !important;
   transition: 0.15s ease;
   text-align: center;
@@ -1042,7 +1078,8 @@ body {
 .react-datepicker__time-container .react-datepicker__header {
   border-top-right-radius: 8px;
   border-bottom: 1px solid var(--form-border) !important;
-  height: 50px; /* Fixed header height */
+  height: 50px;
+  /* Fixed header height */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1521,11 +1558,11 @@ body {
   .highcharts-title {
     font-size: 14px !important;
   }
-  
+
   .highcharts-axis-labels text {
     font-size: 10px !important;
   }
-  
+
   .highcharts-legend-item text {
     font-size: 11px !important;
   }
@@ -1533,8 +1570,13 @@ body {
 
 /* Animation for loading spinner (if you want to customize) */
 @keyframes highcharts-loading-spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .highcharts-loading-inner::after {
@@ -1597,9 +1639,9 @@ body {
   background: #fff !important;
   border: 1px solid rgba(0, 0, 0, 0.12) !important;
   border-radius: 4px !important;
-  box-shadow: 0 5px 5px -3px rgba(0,0,0,.2),
-              0 8px 10px 1px rgba(0,0,0,.14),
-              0 3px 14px 2px rgba(0,0,0,.12) !important;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .2),
+    0 8px 10px 1px rgba(0, 0, 0, .14),
+    0 3px 14px 2px rgba(0, 0, 0, .12) !important;
 }
 
 .owl-dt-container * {
@@ -1737,8 +1779,7 @@ body {
 }
 
 /* Hover */
-.owl-dt-calendar-cell:not(.owl-dt-calendar-cell-disabled):hover
-  .owl-dt-calendar-cell-content:not(.owl-dt-calendar-cell-selected) {
+.owl-dt-calendar-cell:not(.owl-dt-calendar-cell-disabled):hover .owl-dt-calendar-cell-content:not(.owl-dt-calendar-cell-selected) {
   background: rgba(253, 159, 53, 0.15) !important;
 }
 
@@ -1809,9 +1850,11 @@ body {
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.15);
   }
+
   100% {
     transform: scale(1);
   }

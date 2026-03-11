@@ -1,88 +1,78 @@
-<div  class="row ng-star-inserted">
-    <div  class="col-12">
-        <mat-grid-list  cols="3"
-            rowheight="1:0.950" class="mat-grid-list"
-            style="padding-bottom: calc(4 * ((31.6667% - 0.666667px) * 1) + 0px + 3px);">
-            <div>
-                <mat-grid-tile *ngFor="let item of datasorce;let i=index"  class="mat-grid-tile dial-card ng-star-inserted"
-                    rowspan="1" colspan="1"
-                    style="left: 0px; width: calc((33.3333% - 0.666667px) * 1 + 0px); margin-top: 0px; padding-top: calc((31.6667% - 0.666667px) * 1 + 0px);">
-                    <div class="mat-grid-tile-content cursor-class" (dblclick)="openModal(secondsDataChart,item.iotTagId,item.parameterName,item.unitofmeasurement)">
-                    <!-- <div class="mat-grid-tile-content cursor-class"> -->
-                        
-                         <mat-card
-                            class="kpi-card mb-10" >
-                            <mat-card-header 
-                                class="mat-card-header">
-                                <div class="mat-card-header-text">
-                                    <mat-card-title 
-                                        class="mat-card-title kpi-dial-card-title">{{item.parameterName | removebrackets}}
-                                    </mat-card-title>
-                                </div>
-                            </mat-card-header>
-                            <ngx-gauge [size]='150' type="arch" [thick]="14" [value]="item.actualValue.toFixed(2)"  [max]="item.actualValue+250" cap="round" 
-                        [append]="item.unitofmeasurement" [foregroundColor]="item.foregroundColor" backgroundColor="#fff" style="width: 150px; height: 93.2571px; color: #fff;"></ngx-gauge>
-                        </mat-card>
-                        <!-- </a> -->
-                    </div>
-                </mat-grid-tile>
+<div class="row ng-star-inserted">
+  <div class="col-12">
+    <mat-grid-list
+      cols="3"
+      rowheight="1:1.2"
+      gutterSize="8px"
+      class="mat-grid-list"
+    >
+      <div>
+        <mat-grid-tile
+          *ngFor="let item of datasorce; let i = index"
+          class="mat-grid-tile dial-card ng-star-inserted"
+          rowspan="1"
+          colspan="1"
+        >
+          <div
+            class="mat-grid-tile-content cursor-class"
+            (dblclick)="openModal(secondsDataChart, item.iotTagId, item.parameterName, item.unitofmeasurement)"
+          >
+            <div class="py-2 relative w-full h-full rounded-xl border-2 border-[var(--chart-nav-border)] flex flex-col items-center justify-center overflow-hidden">
+
+              <span class="text-[13px] mb-1 text-[var(--text-color)] text-center font-semibold uppercase leading-tight px-1">
+                {{ item.parameterName | removebrackets }}
+              </span>
+
+              <ngx-gauge
+                type="arch"
+                [thick]="12"
+                [value]="item.actualValue.toFixed(2)"
+                [max]="item.actualValue + 250"
+                cap="round"
+                [append]="item.unitofmeasurement"
+                [foregroundColor]="item.foregroundColor"
+                backgroundColor="#F1F0EE"
+                class="!w-full"
+              ></ngx-gauge>
+
             </div>
-        </mat-grid-list>
-        <!-- <mat-grid-list  *ngIf="type=='resultant'" cols="4"
-            rowheight="1:0.950" class="mat-grid-list"
-            style="padding-bottom: calc(4 * ((31.6667% - 0.666667px) * 1) + 0px + 3px);">
-            <div>
-                <mat-grid-tile *ngFor="let item of datasorce;let i=index"  class="mat-grid-tile dial-card ng-star-inserted"
-                    rowspan="1" colspan="1"
-                    style="left: 0px; width: calc((33.3333% - 0.666667px) * 1 + 0px); margin-top: 0px; padding-top: calc((31.6667% - 0.666667px) * 1 + 0px);">
-                    <div class="mat-grid-tile-content">
-                        <mat-card 
-                            class="kpi-card">
-                            <mat-card-header 
-                                class="mat-card-header">
-                                <div class="mat-card-header-text">
-                                    <mat-card-title 
-                                        class="mat-card-title kpi-dial-card-title">{{item.parameterName}}
-                                    </mat-card-title>
-                                </div>
-                            </mat-card-header>
-                            <ngx-gauge [size]='109' type="arch" [thick]="7" [value]="item.actualValue" cap="round" 
-                        append="" foregroundColor="#3358f4" backgroundColor="#ecf0f1" style="width: 109.714px; height: 93.2571px;"></ngx-gauge>
-                        </mat-card>
-                    </div>
-                </mat-grid-tile>
-            </div>
-        </mat-grid-list> -->
-    </div>
+          </div>
+        </mat-grid-tile>
+      </div>
+    </mat-grid-list>
+  </div>
 </div>
 
-
 <ng-template class="owl-control" #secondsDataChart>
-    <div class="modal-header">
-        <h4 class="modal-title pull-left">History Data for {{display_name | removebrackets}}</h4>
-        <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide();closeModal()">
-          <span aria-hidden="true" class="visually-hidden">&times;</span>
-        </button>
-      </div>
-    <div class="modal-body">
-        <div class="control-dateTime">
-            <input class="datetime-modal" [owlDateTimeTrigger]="dt16" [owlDateTime]="dt16" [(ngModel)]="selectRange" class="form-control" (dateTimeChange)="onselectDateTimeRange($event)" 
-               [selectMode]="'range'" placeholder="Select Date Range" [max]="max">
-            <owl-date-time #dt16 class="xyzz"></owl-date-time>
-       
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">History Data for {{ display_name | removebrackets }}</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide(); closeModal()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="control-dateTime">
+      <input
+        [owlDateTimeTrigger]="dt16"
+        [owlDateTime]="dt16"
+        [(ngModel)]="selectRange"
+        class="form-control"
+        (dateTimeChange)="onselectDateTimeRange($event)"
+        [selectMode]="'range'"
+        placeholder="Select Date Range"
+        [max]="max"
+      />
+      <owl-date-time #dt16 class="xyzz"></owl-date-time>
     </div>
-    <!-- <div class="row">
-        <div class="col-md-12">
-            <div class="chart-line mt-2">
-                <div class="linechart" [chart]="chart"></div>
-            </div>
-        </div>
-    </div> -->
     <app-loader class="d-flex justify-content-center" *ngIf="loadchart">
-        <div class="d-flex justify-content-center">
-            Loading
-        </div>
+      <div class="d-flex justify-content-center">Loading</div>
     </app-loader>
-      <app-line-chart *ngIf="chartresult" [dateTimeData]="this.dateTimedata" [seriesData]="this.seriesData" [displayName]="display_name" [unitMeasure]="unit_measure"></app-line-chart>
-    </div>
-  </ng-template>
+    <app-line-chart
+      *ngIf="chartresult"
+      [dateTimeData]="this.dateTimedata"
+      [seriesData]="this.seriesData"
+      [displayName]="display_name"
+      [unitMeasure]="unit_measure"
+    ></app-line-chart>
+  </div>
+</ng-template>

@@ -8,7 +8,7 @@ import { RemovebracketsPipe } from 'src/app/pipes/removebrackets.pipe';
 @Component({
   selector: 'app-gauge-graph',
   templateUrl: './gauge-graph.component.html',
-  styleUrls: ['./gauge-graph.component.scss'],
+  // styleUrls: ['./gauge-graph.component.scss'],
 })
 export class GaugeGraphComponent {
   @Input() type!: string;

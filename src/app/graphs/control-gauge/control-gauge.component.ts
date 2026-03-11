@@ -7,7 +7,7 @@ import { RemovebracketsPipe } from 'src/app/pipes/removebrackets.pipe';
 @Component({
   selector: 'app-control-gauge',
   templateUrl: './control-gauge.component.html',
-  styleUrls: ['./control-gauge.component.scss']
+  // styleUrls: ['./control-gauge.component.scss']
 })
 export class ControlGaugeComponent implements OnInit {
   @Input() type!:string;
