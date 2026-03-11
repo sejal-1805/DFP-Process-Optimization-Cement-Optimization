@@ -745,6 +745,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+/* Importing Bootstrap SCSS file. */
+ 
+/* Importing Datepicker SCSS file. */
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
 
 body {
   font-family: var(--font-inter);
@@ -873,19 +878,33 @@ body {
   min-height: calc(100vh - 60px);
 }
 
+// Force left drawer visible on desktop
+@media (min-width: 1024px) {
+  app-left-drawer .sidebar-container {
+    transform: translateX(0) !important;
+    width: 240px !important;
+  }
+}
+
 ngx-gauge svg {
   width: 100% !important;
   height: auto !important;
 }
-
 ngx-gauge .reading-block {
-  font-size: 13px !important;
+  font-size: 11px !important;
   color: var(--text-color) !important;
+  text-align: center !important;
+  width: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+  position: absolute !important;
 }
 
 ngx-gauge .reading-affix {
-  font-size: 12px !important;
+  font-size: 11px !important;
   color: var(--text-color) !important;
+  display: block !important;
+  text-align: center !important;
 }
 
 /* SCROLLBAR STYLE */

@@ -1,0 +1,14 @@
+<div class="container" *ngIf="!noData">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- {{dateTimeData | json}} -->
+            <div class="chart-line mt-2">
+                <div class="linechart" [chart]="chart"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="noDataBox" *ngIf="noData">
+    <span class="text-center text-yellow">No Data Found</span>
+</div>
