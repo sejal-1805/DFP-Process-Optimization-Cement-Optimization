@@ -871,6 +871,42 @@ body {
   stroke: #22d3ee !important;
 }
 
+// Table Pagination CSS
+/* Optional: also make disabled arrows grey */
+.mat-mdc-paginator .mat-mdc-icon-button[disabled] svg {
+  fill: var(--card-subtle) !important;
+}
+
+/* Remove circle background from paginator arrows */
+.mat-mdc-paginator .mat-mdc-icon-button {
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Remove circle on hover */
+.mat-mdc-paginator .mat-mdc-icon-button:hover {
+  background: transparent !important;
+}
+
+/* Remove circle on click */
+.mat-mdc-paginator .mat-mdc-icon-button:active {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Remove focus circle */
+.mat-mdc-paginator .mat-mdc-icon-button:focus {
+  background: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove ripple effect completely */
+.mat-mdc-paginator .mat-ripple-element {
+  display: none !important;
+}
+
 //Process Optimization home page modal
 .modal-dialog {
   margin-left: 5vw !important;

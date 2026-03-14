@@ -47,6 +47,8 @@ export class EquipmentListComponent {
 
     "endDate": null,
 
+    "dateRange": [new Date(Date.now() - 7 * 24 * 60 * 60 * 1000), new Date()],
+
     "tagId":''
   }
 
@@ -255,6 +257,7 @@ export class EquipmentListComponent {
       "Model_No": 0,
       "startDate": event.dateRange[0] ? event.dateRange[0] : moment().toDate,
       "endDate": event.dateRange[1] ? event.dateRange[1] : moment().toDate,
+      "dateRange": event.dateRange || [new Date(Date.now() - 7 * 24 * 60 * 60 * 1000), new Date()],
       "tagId": ""
     }
     // console.log(event);

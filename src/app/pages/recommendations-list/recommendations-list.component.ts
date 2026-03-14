@@ -57,6 +57,8 @@ export class RecommendationsListComponent {
 
     "endDate":'null',
 
+    "dateRange": [new Date(Date.now() - 7 * 24 * 60 * 60 * 1000), new Date()],
+
     "tagId": "" 
   }
 
@@ -101,24 +103,6 @@ export class RecommendationsListComponent {
 
     this.urlLink=window.location.href;
 
-    
-      this.payload = {
-
-        "Plant_Code": 'null',
-    
-        "Mill":'null',
-    
-        "Grade": 'null',
-    
-        "Model_No": 0,
-    
-        "startDate": 'null',
-    
-        "endDate":'null',
-    
-        "tagId": "" 
-      }
-    
     
     // console.log("Recommmand paylaod",this.payload);
     
@@ -269,6 +253,7 @@ export class RecommendationsListComponent {
       "Model_No": 0,
       "startDate": event.dateRange[0]?event.dateRange[0]: moment().toDate,
       "endDate": event.dateRange[1]?event.dateRange[1]: moment().toDate,
+      "dateRange": event.dateRange || [new Date(Date.now() - 7 * 24 * 60 * 60 * 1000), new Date()],
       "tagId": "" 
     }
     localStorage.setItem('cementFiltersState', JSON.stringify(event));

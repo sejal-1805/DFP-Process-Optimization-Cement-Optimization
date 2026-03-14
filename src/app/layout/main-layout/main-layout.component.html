@@ -17,15 +17,15 @@
       class="flex-1 flex flex-col overflow-hidden transition-all duration-300"
       [ngClass]="{
         'lg:ml-60': !sidebrCollapsed,
-        'lg:ml-20': sidebrCollapsed
+        'lg:ml-12': sidebrCollapsed
       }"
     >
       <!-- TOP BAR -->
-      <div
+      <!-- <div
         class="flex items-center justify-between pr-6 pl-4 pt-3 shrink-0 text-[var(--text-color)]"
       >
         <div class="text-sm font-semibold">Process Optimization</div>
-      </div>
+      </div> -->
 
       <!-- MAIN AREA -->
       <main
@@ -33,7 +33,7 @@
       >
         <!-- SCROLLABLE CONTAINER -->
         <div
-          class="flex-1 mt-2 rounded-xl sm:rounded-xl bg-[var(--bg-main-container)] [box-shadow:var(--left-drawer-shadow)] transition-all duration-300 overflow-y-auto scroll-smooth w-full mx-auto lg:max-w-[1400px] xl:max-w-[1700px]"
+          class="custom-scrollbar flex-1 mt-3 rounded-xl sm:rounded-xl bg-[var(--bg-main-container)] [box-shadow:var(--left-drawer-shadow)] transition-all duration-300 overflow-y-auto scroll-smooth w-full mx-auto lg:max-w-[1500px] xl:max-w-[1800px]"
         >
           <!-- Breadcrumb -->
           <div class="mb-2 sm:mb-3">

@@ -91,6 +91,15 @@ export class DashboardComponent implements OnInit {
       'showLoader': false
     }
     this.urlLink = window.location.href;
+    
+    // Initialize payload with default values
+    this.payload = {
+      Plant_Code: 'null',
+      Mill: 'null',
+      Grade: 'null',
+      Model_No: 0,
+      dateTime: moment().format('YYYY-MM-DD')
+    };
     // this.lineChart()
     // this.getPieChart()
     // this.barchart()

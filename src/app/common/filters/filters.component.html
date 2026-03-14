@@ -1,6 +1,6 @@
 <div
   class="flex flex-col gap-2 w-full my-2"
-  *ngIf="showRange; else withoutRange"
+  *ngIf="showRange || type === 'rangepicker'; else withoutRange"
 >
   <div class="w-full">
     <form #myForm="ngForm">
@@ -59,7 +59,6 @@
               <label class="text-[var(--text-color)]">Date Range</label>
               <app-datetimepicker
                 [type]="type"
-                *ngIf="filtersData"
                 [selectedRange]="filtersData.dateRange"
                 (dateTimeRange)="onSelectDateRange($event)"
                 class="m2-10"
@@ -69,7 +68,6 @@
               <label class="text-[var(--text-color)]">Date</label>
               <app-datetimepicker
                 [type]="type"
-                *ngIf="filtersData"
                 [date_time]="filtersData.dateTime"
                 (dateTime)="onSelectDatetime($event)"
                 class="m2-10"
@@ -79,7 +77,6 @@
               <label class="mb-2 text-[var(--text-color)]">Date</label>
               <app-datetimepicker
                 [type]="type"
-                *ngIf="filtersData"
                 [date_times]="filtersData.dateTime"
                 (dateTimes)="onSelectDatetimes($event)"
                 class="m2-10"
@@ -193,7 +190,6 @@
                 <label class="text-[var(--text-color)]">Date Range</label>
                 <app-datetimepicker
                   [type]="type"
-                  *ngIf="filtersData"
                   [selectedRange]="filtersData.dateRange"
                   (dateTimeRange)="onSelectDateRange($event)"
                 ></app-datetimepicker>
@@ -202,7 +198,6 @@
                 <label class="text-[var(--text-color)]">Date</label>
                 <app-datetimepicker
                   [type]="type"
-                  *ngIf="filtersData"
                   [date_time]="filtersData.dateTime"
                   (dateTime)="onSelectDatetime($event)"
                 ></app-datetimepicker>
@@ -211,7 +206,6 @@
                 <label class="text-[var(--text-color)]">Date</label>
                 <app-datetimepicker
                   [type]="type"
-                  *ngIf="filtersData"
                   [date_times]="filtersData.dateTime"
                   (dateTimes)="onSelectDatetimes($event)"
                 ></app-datetimepicker>

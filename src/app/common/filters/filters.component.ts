@@ -73,6 +73,7 @@ export class FiltersComponent {
 
 
   displayName:any;
+  private retryInterval: any;
   ngOnInit() {
 
     this.urlLink=window.location.href
@@ -107,9 +108,17 @@ export class FiltersComponent {
     this.cement_dropDown=JSON.parse(localStorage.getItem("cementOpt_dropDownData") || '[]')
     // console.log(this.cement_dropDown);
     
-    if(this.cement_dropDown.length===0){
-      this.getDropDownData()
-    }
+    // Always try to load dropdown data on init
+    this.getDropDownData();
+    
+    // Retry loading data if it hasn't loaded within 3 seconds (wait for auth)
+    this.retryInterval = setInterval(() => {
+      if(!this.plantData || this.plantData.length === 0) {
+        this.getDropDownData();
+      } else {
+        clearInterval(this.retryInterval);
+      }
+    }, 2000);
 
 
     if(this.urlLink.includes("home")){
@@ -604,5 +613,11 @@ export class FiltersComponent {
     sessionStorage.setItem('submitCount_CementOPT','1')
     
     // this.getBlaineRangeList()
+  }
+
+  ngOnDestroy(){
+    if(this.retryInterval){
+      clearInterval(this.retryInterval);
+    }
   }
 }

@@ -60,7 +60,6 @@
     </div> -->
     <!-- {{recommendationDate | json}} -->
     <app-filters
-      *ngIf="cementCheckToken"
       [filtersData]="payload"
       [filtersDate]="recommendationDate"
       type="datepicker1"
@@ -74,17 +73,18 @@
     </div>
     <div class="flex flex-row mb-2 gap-2 m-1" [hidden]="flags.showLoader">
       <div
-        class="col-md-6 col-sm-6 col-xs-12"
+        class="w-full"
         *ngIf="dataSource && dataSource.Resultant_Tags_Data.length > 0"
       >
-        <div>
+        <div class="flex gap-5 w-full">
+          <!-- RESULTANT PARAMETERS -->
           <div
-            class="bg-[var(--dashboard-graph-bg)] rounded-xl px-3 py-2 h-[600px] custom-scrollbar overflow-auto"
+            class="flex-1 bg-[var(--dashboard-graph-bg)] rounded-xl px-3 py-2 h-[55vh] overflow-y-auto overflow-x-hidden custom-scrollbar"
           >
             <p class="text-[var(--text-color)] text-[14px] mb-2">
               RESULTANT PARAMETERS
             </p>
-            <!-- <hr color="#636363" /> -->
+
             <app-gauge-graph
               [datasorce]="dataSource.Resultant_Tags_Data"
               [payload]="payload"
@@ -92,30 +92,26 @@
               type="resultant"
             ></app-gauge-graph>
           </div>
-        </div>
-      </div>
-      <div
-        class="col-md-6 col-sm-6 col-xs-12"
-        *ngIf="dataSource && dataSource.Control_Tags_Data.length > 0"
-      >
-        <div>
+
+          <!-- CONTROL PARAMETERS -->
           <div
-            class="bg-[var(--dashboard-graph-bg)] rounded-xl px-3 py-2 h-[600px] custom-scrollbar overflow-auto"
+            class="flex-1"
+            *ngIf="dataSource && dataSource.Control_Tags_Data.length > 0"
           >
-            <p class="text-[var(--text-color)] text-[14px] mb-2">
-              CONTROL PARAMETERS
-            </p>
-            <!-- <hr color="#636363" /> -->
-            <!-- <div class="row"> -->
-            <!-- <div class="col-12"> -->
-            <app-control-gauge
-              [datasorce]="dataSource.Control_Tags_Data"
-              [payload]="payload"
-              [timestamp]="dataSource.timestamp"
-              type="controlable"
-            ></app-control-gauge>
-            <!-- </div> -->
-            <!-- </div> -->
+            <div
+              class="bg-[var(--dashboard-graph-bg)] rounded-xl px-3 py-2 h-[55vh] overflow-y-auto overflow-x-hidden custom-scrollbar"
+            >
+              <p class="text-[var(--text-color)] text-[14px] mb-2">
+                CONTROL PARAMETERS
+              </p>
+
+              <app-control-gauge
+                [datasorce]="dataSource.Control_Tags_Data"
+                [payload]="payload"
+                [timestamp]="dataSource.timestamp"
+                type="controlable"
+              ></app-control-gauge>
+            </div>
           </div>
         </div>
       </div>
